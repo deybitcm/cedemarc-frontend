@@ -19,7 +19,7 @@ const Hero = () => {
       <div className='absolute inset-0 bg-black opacity-40'></div>
       <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in'>
         <h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 animate-slide-down'>
-          CEDEMARC Lubricentro
+          Lubricentro CEDEMARC
         </h1>
         <p
           className='text-xl sm:text-2xl text-gray-300 mb-8 animate-slide-up opacity-0'
