@@ -1,0 +1,61 @@
+const products = [
+  {
+    id: 'p1',
+    name: 'Aceite Sintético 5W-30 1L',
+    price: 25.0,
+    category: 'Lubricantes',
+    subcategory: 'Aceites',
+    brand: 'Mobil',
+    viscosity: '5W-30',
+    image: null,
+    description: 'Aceite sintético de alta tecnología para motores modernos.',
+  },
+  {
+    id: 'p2',
+    name: 'Filtro de Aceite Universal',
+    price: 12.5,
+    category: 'Repuestos',
+    subcategory: 'Filtros',
+    brand: 'Bosch',
+    viscosity: null,
+    image: null,
+    description:
+      'Filtro de alta eficiencia compatible con la mayoría de vehículos.',
+  },
+  {
+    id: 'p3',
+    name: 'Aceite Mineral 20W-50 4L',
+    price: 40.0,
+    category: 'Lubricantes',
+    subcategory: 'Aceites',
+    brand: 'Castrol',
+    viscosity: '20W-50',
+    image: null,
+    description:
+      'Aceite mineral para vehículos de uso rudo y alta kilometraje.',
+  },
+  {
+    id: 'p4',
+    name: 'Filtro de Aire Deportivo',
+    price: 35.0,
+    category: 'Repuestos',
+    subcategory: 'Filtros',
+    brand: 'K&N',
+    viscosity: null,
+    image: null,
+    description: 'Filtro de aire de alto flujo para mejor rendimiento.',
+  },
+  {
+    id: 'p5',
+    name: 'Aditivo Limpiador de Inyectores',
+    price: 9.99,
+    category: 'Aditivos',
+    subcategory: 'Limpieza',
+    brand: 'Liqui Moly',
+    viscosity: null,
+    image: null,
+    description: 'Formulación concentrada para limpiar sistema de inyección.',
+  },
+]
+
+export default products
