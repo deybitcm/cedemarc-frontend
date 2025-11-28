@@ -12,7 +12,6 @@ import react from '@vitejs/plugin-react'
 //     : '/cedemarc-frontend/'
 
 export default defineConfig({
-  base: '/cedemarc-frontend/',
   plugins: [react()],
   css: {
     postcss: './postcss.config.cjs',
