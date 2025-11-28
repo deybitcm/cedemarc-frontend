@@ -23,24 +23,38 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className='hidden md:flex items-center space-x-4'>
-            <NavLink to='/' className={linkClass} end>
+            <NavLink
+              to='/'
+              className={linkClass}
+              end
+              onClick={(e) => {
+                // Si ya estás en la home, haz scroll al inicio
+                if (
+                  window.location.hash === '' ||
+                  window.location.hash === '#/'
+                ) {
+                  e.preventDefault()
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+              }}
+            >
               Inicio
             </NavLink>
-            <a
-              href='#servicios'
+            <NavLink
+              to='/#servicios'
               className='text-gray-700 hover:text-blue-600 px-3 py-2'
             >
               Servicios
-            </a>
+            </NavLink>
             <NavLink to='/productos' className={linkClass}>
               Productos
             </NavLink>
-            <a
-              href='#contacto'
+            <NavLink
+              to='/#contacto'
               className='text-gray-700 hover:text-blue-600 px-3 py-2'
             >
               Contacto
-            </a>
+            </NavLink>
           </div>
 
           {/* Mobile Menu Button */}
