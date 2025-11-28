@@ -1,49 +1,58 @@
-import { useState, useMemo } from 'react'
-import productsData from '../data/products'
-import ProductCard from '../components/ProductCard'
+// import { useState, useMemo } from 'react'
+// import productsData from '../data/products'
+// import ProductCard from '../components/ProductCard'
 
 const Products = () => {
-  const [category, setCategory] = useState('All')
-  const [subcategory, setSubcategory] = useState('All')
-  const [brand, setBrand] = useState('All')
-  const [viscosity, setViscosity] = useState('All')
+  // const [category, setCategory] = useState('All')
+  // const [subcategory, setSubcategory] = useState('All')
+  // const [brand, setBrand] = useState('All')
+  // const [viscosity, setViscosity] = useState('All')
 
-  const categories = useMemo(() => {
-    const set = new Set(productsData.map((p) => p.category))
-    return ['All', ...Array.from(set)]
-  }, [])
+  // Banner "Próximamente"
+  const ComingSoonBanner = () => (
+    <div className='bg-yellow-200 text-yellow-900 text-center py-4 rounded mb-6 shadow'>
+      <span className='font-bold text-lg'>¡Próximamente!</span>{' '}
+      <span>La sección de productos estará disponible muy pronto.</span>
+    </div>
+  )
 
-  const subcategories = useMemo(() => {
-    const filtered =
-      category === 'All'
-        ? productsData
-        : productsData.filter((p) => p.category === category)
-    const set = new Set(filtered.map((p) => p.subcategory))
-    return ['All', ...Array.from(set)]
-  }, [category])
+  // const categories = useMemo(() => {
+  //   const set = new Set(productsData.map((p) => p.category))
+  //   return ['All', ...Array.from(set)]
+  // }, [])
 
-  const brands = useMemo(() => {
-    const set = new Set(productsData.map((p) => p.brand).filter(Boolean))
-    return ['All', ...Array.from(set)]
-  }, [])
+  // const subcategories = useMemo(() => {
+  //   const filtered =
+  //     category === 'All'
+  //       ? productsData
+  //       : productsData.filter((p) => p.category === category)
+  //   const set = new Set(filtered.map((p) => p.subcategory))
+  //   return ['All', ...Array.from(set)]
+  // }, [category])
 
-  const viscosities = useMemo(() => {
-    const set = new Set(productsData.map((p) => p.viscosity).filter(Boolean))
-    return ['All', ...Array.from(set)]
-  }, [])
+  // const brands = useMemo(() => {
+  //   const set = new Set(productsData.map((p) => p.brand).filter(Boolean))
+  //   return ['All', ...Array.from(set)]
+  // }, [])
 
-  const filtered = productsData.filter((p) => {
-    if (category !== 'All' && p.category !== category) return false
-    if (subcategory !== 'All' && p.subcategory !== subcategory) return false
-    if (brand !== 'All' && p.brand !== brand) return false
-    if (viscosity !== 'All' && p.viscosity !== viscosity) return false
-    return true
-  })
+  // const viscosities = useMemo(() => {
+  //   const set = new Set(productsData.map((p) => p.viscosity).filter(Boolean))
+  //   return ['All', ...Array.from(set)]
+  // }, [])
+
+  // const filtered = productsData.filter((p) => {
+  //   if (category !== 'All' && p.category !== category) return false
+  //   if (subcategory !== 'All' && p.subcategory !== subcategory) return false
+  //   if (brand !== 'All' && p.brand !== brand) return false
+  //   if (viscosity !== 'All' && p.viscosity !== viscosity) return false
+  //   return true
+  // })
 
   return (
     <div className='pt-24'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <h1 className='text-3xl font-extrabold text-gray-900 my-6'>
+        <ComingSoonBanner />
+        {/* <h1 className='text-3xl font-extrabold text-gray-900 my-6'>
           Productos
         </h1>
 
@@ -144,7 +153,7 @@ const Products = () => {
           <p className='mt-8 text-gray-600'>
             No se encontraron productos con esos filtros.
           </p>
-        )}
+        )} */}
       </div>
     </div>
   )

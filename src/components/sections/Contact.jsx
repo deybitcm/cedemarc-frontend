@@ -5,10 +5,41 @@ const Contact = () => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // Build WhatsApp message and open chat
+    // --- Send to Google Sheets via Apps Script webhook (optional) ---
+    // Create an Apps Script Web App that writes POSTed JSON to a Sheet,
+    // then deploy it and paste the URL below into `SHEETS_WEBHOOK_URL`.
+    const SHEETS_WEBHOOK_URL =
+      'https://script.google.com/macros/s/AKfycbzNyZvh1nN8CqHRYl8bP6leE0VPvMq-qpUEzGvhGixC6_tiMc8enN1Q5YvN9udvLdpfGw/exec'
+
+    const payload = {
+      timestamp: new Date().toISOString(),
+      name,
+      email,
+      message,
+    }
+
+    if (
+      SHEETS_WEBHOOK_URL &&
+      SHEETS_WEBHOOK_URL !== 'YOUR_SHEETS_WEBHOOK_URL'
+    ) {
+      try {
+        await fetch(SHEETS_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+        })
+
+        // optionally you can show a small success indicator here
+      } catch (err) {
+        console.error('Error sending to Sheets webhook:', err)
+        // don't block WhatsApp opening on error
+      }
+    }
+
+    // Build WhatsApp message and open chat (fallback/primary)
     const phone = '51921604711' // international format without +
     const lines = [
       `Contacto desde web: ${name || 'Sin nombre'}`,
