@@ -1,4 +1,26 @@
+import { useState } from 'react'
+
 const Contact = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    // Build WhatsApp message and open chat
+    const phone = '51921604711' // international format without +
+    const lines = [
+      `Contacto desde web: ${name || 'Sin nombre'}`,
+      `Email: ${email || 'No proporcionado'}`,
+      '',
+      message || '',
+    ]
+    const text = encodeURIComponent(lines.join('\n'))
+    const url = `https://wa.me/${phone}?text=${text}`
+    window.open(url, '_blank', 'noopener')
+  }
+
   return (
     <section id='contacto' className='py-20 bg-white'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -85,10 +107,36 @@ const Contact = () => {
                   </p>
                 </div>
               </div>
+              {/* Google Maps embed */}
+              <div className='mt-6'>
+                <div className='w-full h-56 sm:h-64 rounded-md overflow-hidden'>
+                  <iframe
+                    title='Ubicación CEDEMARC'
+                    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d550.2449130945269!2d-70.24413788599897!3d-17.997344892290577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915acf1aa7f47891%3A0x2ad6a6133c1d051!2sLubricentro%20Cedemarc%20Distribuciones%20y%20Soluciones%20EIRL!5e0!3m2!1ses!2spe!4v1764351137345!5m2!1ses!2spe'
+                    width='100%'
+                    height='100%'
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading='lazy'
+                    referrerPolicy='no-referrer-when-downgrade'
+                  />
+                </div>
+                <div className='mt-3'>
+                  <a
+                    href='https://maps.app.goo.gl/cXtyzM9Nzx6H6yva8'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition'
+                    aria-label='Abrir ubicación en Google Maps'
+                  >
+                    Ver en Google Maps
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
-          <form className='space-y-6'>
+          <form className='space-y-6' onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor='name'
@@ -99,6 +147,8 @@ const Contact = () => {
               <input
                 type='text'
                 id='name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
               />
             </div>
@@ -113,6 +163,8 @@ const Contact = () => {
               <input
                 type='email'
                 id='email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
               />
             </div>
@@ -127,6 +179,8 @@ const Contact = () => {
               <textarea
                 id='message'
                 rows='4'
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
               ></textarea>
             </div>
