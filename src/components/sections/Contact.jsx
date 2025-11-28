@@ -39,9 +39,9 @@ const Contact = () => {
                 </svg>
                 <div className='ml-4'>
                   <p className='text-gray-700'>
-                    Av. Principal #123
+                    Av. Industrial #1759
                     <br />
-                    Ciudad, País
+                    Tacna, Perú
                   </p>
                 </div>
               </div>
@@ -61,7 +61,7 @@ const Contact = () => {
                   />
                 </svg>
                 <div className='ml-4'>
-                  <p className='text-gray-700'>(123) 456-7890</p>
+                  <p className='text-gray-700'>(+51) 921604711</p>
                 </div>
               </div>
 
@@ -80,7 +80,9 @@ const Contact = () => {
                   />
                 </svg>
                 <div className='ml-4'>
-                  <p className='text-gray-700'>info@cedemarc.com</p>
+                  <p className='text-gray-700'>
+                    cedemarc.dist.soluciones@gmail.com
+                  </p>
                 </div>
               </div>
             </div>
