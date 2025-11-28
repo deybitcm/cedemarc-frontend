@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
 import Services from './components/sections/Services'
@@ -8,7 +8,7 @@ import Products from './pages/Products'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className='min-h-screen'>
         <Navbar />
         <Routes>
@@ -25,7 +25,7 @@ function App() {
           <Route path='/productos' element={<Products />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
