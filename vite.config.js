@@ -7,5 +7,5 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.cjs',
   },
-  base: '/cedemarc-frontend/',
+  base: 'https://deybitcm.github.io/cedemarc-frontend/',
 })
