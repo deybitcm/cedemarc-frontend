@@ -15,25 +15,27 @@ const Navbar = () => {
   const linkClass = (active) =>
     active
       ? `px-3 py-2 font-semibold ${
-          theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
-        } border-b-2 border-blue-600`
+          theme === 'dark'
+            ? 'text-blue-400 border-b-2 border-blue-400'
+            : 'text-yellow-400 border-b-2 border-yellow-400'
+        }`
       : `px-3 py-2 ${
           theme === 'dark'
             ? 'text-gray-300 hover:text-blue-400'
-            : 'text-gray-700 hover:text-blue-600'
+            : 'text-white hover:text-yellow-300'
         }`
 
   return (
     <nav
       className={`shadow-lg fixed w-full z-10 ${
-        theme === 'dark' ? 'bg-gray-800' : 'bg-white'
+        theme === 'dark' ? 'bg-gray-800' : 'bg-blue-800'
       }`}
     >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between h-16'>
           <div className='flex items-center'>
             <div className='flex-shrink-0'>
-              <Link to='/' className='text-2xl font-bold text-blue-600'>
+              <Link to='/' className='text-2xl font-bold text-white'>
                 CEDEMARC
               </Link>
             </div>
@@ -46,7 +48,7 @@ const Navbar = () => {
               className={`ml-4 px-3 py-2 rounded ${
                 theme === 'dark'
                   ? 'bg-gray-700 text-white'
-                  : 'bg-gray-200 text-gray-900'
+                  : 'bg-blue-700 text-white'
               } transition`}
               aria-label='Cambiar tema'
             >
