@@ -1,6 +1,8 @@
+import ThemeContext from './ThemeContext'
 import './App.css'
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
 import Services from './components/sections/Services'
@@ -16,34 +18,69 @@ function ScrollToSection() {
       if (el) {
         setTimeout(() => {
           el.scrollIntoView({ behavior: 'smooth' })
-        }, 100) // Espera a que se renderice
+        }, 100)
       }
     }
   }, [location])
   return null
 }
 
+function AnimatedPage({ children }) {
+  const location = useLocation()
+  const [animate, setAnimate] = useState(false)
+  useEffect(() => {
+    setAnimate(true)
+    const timer = setTimeout(() => setAnimate(false), 500)
+    return () => clearTimeout(timer)
+  }, [location.pathname])
+  return <div className={animate ? 'page-slide-in' : ''}>{children}</div>
+}
+
+AnimatedPage.propTypes = {
+  children: PropTypes.node,
+}
+
 function App() {
+  const [theme, setTheme] = useState('light')
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark')
+  }, [theme])
+
   return (
-    <HashRouter>
-      <ScrollToSection />
-      <div className='min-h-screen'>
-        <Navbar />
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <>
-                <Hero />
-                <Services />
-                <Contact />
-              </>
-            }
-          />
-          <Route path='/productos' element={<Products />} />
-        </Routes>
-      </div>
-    </HashRouter>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <HashRouter>
+        <ScrollToSection />
+        <div
+          className={`min-h-screen ${
+            theme === 'dark'
+              ? 'bg-gray-900 text-white'
+              : 'bg-white text-gray-900'
+          }`}
+        >
+          <Navbar />
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <AnimatedPage>
+                  <Hero />
+                  <Services />
+                  <Contact />
+                </AnimatedPage>
+              }
+            />
+            <Route
+              path='/productos'
+              element={
+                <AnimatedPage>
+                  <Products />
+                </AnimatedPage>
+              }
+            />
+          </Routes>
+        </div>
+      </HashRouter>
+    </ThemeContext.Provider>
   )
 }
 

@@ -1,16 +1,27 @@
 import { useState } from 'react'
+import { useContext } from 'react'
+import ThemeContext from '../../ThemeContext'
 import { Link, NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { theme, setTheme } = useContext(ThemeContext)
 
   const linkClass = ({ isActive }) =>
-    isActive
+    isActive && theme === 'dark'
       ? 'text-blue-600 px-3 py-2 font-semibold'
+      : isActive && theme === 'light'
+      ? 'text-blue-600 px-3 py-2 font-semibold'
+      : theme === 'dark'
+      ? 'text-gray-300 hover:text-blue-600 px-3 py-2'
       : 'text-gray-700 hover:text-blue-600 px-3 py-2'
 
   return (
-    <nav className='bg-white shadow-lg fixed w-full z-10'>
+    <nav
+      className={`shadow-lg fixed w-full z-10 ${
+        theme === 'dark' ? 'bg-gray-800' : 'bg-white'
+      }`}
+    >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between h-16'>
           <div className='flex items-center'>
@@ -23,6 +34,17 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className='hidden md:flex items-center space-x-4'>
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className={`ml-4 px-3 py-2 rounded ${
+                theme === 'dark'
+                  ? 'bg-gray-700 text-white'
+                  : 'bg-gray-200 text-gray-900'
+              } transition`}
+              aria-label='Cambiar tema'
+            >
+              {theme === 'dark' ? '🌙 Oscuro' : '☀️ Claro'}
+            </button>
             <NavLink
               to='/'
               className={linkClass}
@@ -41,19 +63,13 @@ const Navbar = () => {
             >
               Inicio
             </NavLink>
-            <NavLink
-              to='/#servicios'
-              className='text-gray-700 hover:text-blue-600 px-3 py-2'
-            >
+            <NavLink to='/#servicios' className={linkClass}>
               Servicios
             </NavLink>
             <NavLink to='/productos' className={linkClass}>
               Productos
             </NavLink>
-            <NavLink
-              to='/#contacto'
-              className='text-gray-700 hover:text-blue-600 px-3 py-2'
-            >
+            <NavLink to='/#contacto' className={linkClass}>
               Contacto
             </NavLink>
           </div>

@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
+import ThemeContext from '../../ThemeContext'
 
 const Services = () => {
   useEffect(() => {
@@ -82,15 +83,29 @@ const Services = () => {
     },
   ]
 
+  const { theme } = useContext(ThemeContext)
   return (
-    <section id='servicios' className='py-20 bg-gray-100'>
+    <section
+      id='servicios'
+      className={`py-20 ${
+        theme === 'dark'
+          ? 'bg-gray-800 text-white'
+          : 'bg-gray-100 text-gray-900'
+      }`}
+    >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='text-center'>
-          <h2 className='text-3xl font-extrabold text-gray-900 sm:text-4xl animate-fade-in'>
+          <h2
+            className={`text-3xl font-extrabold sm:text-4xl animate-fade-in ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             Nuestros Servicios
           </h2>
           <p
-            className='mt-4 text-xl text-gray-600 animate-fade-in'
+            className={`mt-4 text-xl animate-fade-in ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}
             style={{ animationDelay: '0.2s' }}
           >
             Ofrecemos servicios profesionales para el mantenimiento de tu
@@ -102,16 +117,28 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className='service-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 opacity-0'
+              className={`service-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 opacity-0 ${
+                theme === 'dark' ? 'bg-gray-700' : 'bg-white'
+              }`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className='flex justify-center mb-4 animate-bounce hover:animate-none'>
                 {service.icon}
               </div>
-              <h3 className='text-xl font-bold text-gray-900 text-center mb-2'>
+              <h3
+                className={`text-xl font-bold text-center mb-2 ${
+                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                }`}
+              >
                 {service.title}
               </h3>
-              <p className='text-gray-600 text-center'>{service.description}</p>
+              <p
+                className={`text-center ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                }`}
+              >
+                {service.description}
+              </p>
             </div>
           ))}
         </div>

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import ThemeContext from '../../ThemeContext'
 
 const Contact = () => {
   const [name, setName] = useState('')
@@ -52,21 +53,43 @@ const Contact = () => {
     window.open(url, '_blank', 'noopener')
   }
 
+  const { theme } = useContext(ThemeContext)
   return (
-    <section id='contacto' className='py-20 bg-white'>
+    <section
+      id='contacto'
+      className={`py-20 ${
+        theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+      }`}
+    >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='text-center'>
-          <h2 className='text-3xl font-extrabold text-gray-900 sm:text-4xl'>
+          <h2
+            className={`text-3xl font-extrabold sm:text-4xl ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             Contáctanos
           </h2>
-          <p className='mt-4 text-xl text-gray-600'>
+          <p
+            className={`mt-4 text-xl ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}
+          >
             Estamos aquí para atenderte
           </p>
         </div>
 
         <div className='mt-20 grid grid-cols-1 gap-8 md:grid-cols-2'>
-          <div className='bg-gray-100 p-6 rounded-lg'>
-            <h3 className='text-xl font-bold text-gray-900 mb-4'>
+          <div
+            className={`${
+              theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'
+            } p-6 rounded-lg`}
+          >
+            <h3
+              className={`text-xl font-bold mb-4 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}
+            >
               Información de Contacto
             </h3>
             <div className='space-y-4'>
@@ -91,7 +114,11 @@ const Contact = () => {
                   />
                 </svg>
                 <div className='ml-4'>
-                  <p className='text-gray-700'>
+                  <p
+                    className={`${
+                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    }`}
+                  >
                     Av. Industrial #1759
                     <br />
                     Tacna, Perú
@@ -114,7 +141,13 @@ const Contact = () => {
                   />
                 </svg>
                 <div className='ml-4'>
-                  <p className='text-gray-700'>(+51) 921604711</p>
+                  <p
+                    className={`${
+                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    }`}
+                  >
+                    (+51) 921604711
+                  </p>
                 </div>
               </div>
 
@@ -133,7 +166,11 @@ const Contact = () => {
                   />
                 </svg>
                 <div className='ml-4'>
-                  <p className='text-gray-700'>
+                  <p
+                    className={`${
+                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    }`}
+                  >
                     cedemarc.dist.soluciones@gmail.com
                   </p>
                 </div>
@@ -171,7 +208,9 @@ const Contact = () => {
             <div>
               <label
                 htmlFor='name'
-                className='block text-sm font-medium text-gray-700'
+                className={`block text-sm font-medium ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                }`}
               >
                 Nombre
               </label>
@@ -180,14 +219,20 @@ const Contact = () => {
                 id='name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+                className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+                  theme === 'dark'
+                    ? 'bg-gray-700 border-gray-700 text-white placeholder-gray-400'
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                }`}
               />
             </div>
 
             <div>
               <label
                 htmlFor='email'
-                className='block text-sm font-medium text-gray-700'
+                className={`block text-sm font-medium ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                }`}
               >
                 Email
               </label>
@@ -196,14 +241,20 @@ const Contact = () => {
                 id='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+                className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+                  theme === 'dark'
+                    ? 'bg-gray-700 border-gray-700 text-white placeholder-gray-400'
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                }`}
               />
             </div>
 
             <div>
               <label
                 htmlFor='message'
-                className='block text-sm font-medium text-gray-700'
+                className={`block text-sm font-medium ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                }`}
               >
                 Mensaje
               </label>
@@ -212,7 +263,11 @@ const Contact = () => {
                 rows='4'
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+                className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+                  theme === 'dark'
+                    ? 'bg-gray-700 border-gray-700 text-white placeholder-white'
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                }`}
               ></textarea>
             </div>
 

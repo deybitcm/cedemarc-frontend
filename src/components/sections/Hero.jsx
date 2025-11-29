@@ -1,5 +1,6 @@
 import oilChangeVideo from '../../assets/videos/oil-change.mp4'
 import { NavLink } from 'react-router-dom'
+import logoCedemarcBlanco from '../../assets/logo_blanco_v3.png'
 
 const Hero = () => {
   return (
@@ -19,9 +20,12 @@ const Hero = () => {
       </video>
       <div className='absolute inset-0 bg-black opacity-40'></div>
       <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in'>
-        <h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 animate-slide-down'>
-          Lubricentro CEDEMARC
-        </h1>
+        <img
+          src={logoCedemarcBlanco}
+          alt='Logo Cedemarc'
+          className='mx-auto mb-4 animate-slide-down'
+          style={{ maxWidth: '650px', width: '100%' }}
+        />
         <p
           className='text-xl sm:text-2xl text-gray-300 mb-8 animate-slide-up opacity-0'
           style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
