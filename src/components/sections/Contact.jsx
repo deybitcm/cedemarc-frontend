@@ -222,7 +222,7 @@ const Contact = () => {
                 className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
                   theme === 'dark'
                     ? 'bg-gray-700 border-gray-700 text-white placeholder-gray-400'
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                    : 'bg-white border-gray-200 border-2 text-gray-900 placeholder-gray-400'
                 }`}
               />
             </div>
@@ -244,7 +244,7 @@ const Contact = () => {
                 className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
                   theme === 'dark'
                     ? 'bg-gray-700 border-gray-700 text-white placeholder-gray-400'
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                    : 'bg-white border-gray-200 border-2  text-gray-900 placeholder-gray-400'
                 }`}
               />
             </div>
@@ -266,7 +266,7 @@ const Contact = () => {
                 className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
                   theme === 'dark'
                     ? 'bg-gray-700 border-gray-700 text-white placeholder-white'
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                    : 'bg-white border-gray-200 border-2  text-gray-900 placeholder-gray-400'
                 }`}
               ></textarea>
             </div>

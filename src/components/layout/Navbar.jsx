@@ -1,20 +1,27 @@
 import { useState } from 'react'
 import { useContext } from 'react'
 import ThemeContext from '../../ThemeContext'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { theme, setTheme } = useContext(ThemeContext)
+  const location = useLocation()
+  const navigate = useNavigate()
 
-  const linkClass = ({ isActive }) =>
-    isActive && theme === 'dark'
-      ? 'text-blue-600 px-3 py-2 font-semibold'
-      : isActive && theme === 'light'
-      ? 'text-blue-600 px-3 py-2 font-semibold'
-      : theme === 'dark'
-      ? 'text-gray-300 hover:text-blue-600 px-3 py-2'
-      : 'text-gray-700 hover:text-blue-600 px-3 py-2'
+  // Helper para saber si el hash está activo
+  const isHashActive = (hash) => location.hash === hash
+
+  const linkClass = (active) =>
+    active
+      ? `px-3 py-2 font-semibold ${
+          theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+        } border-b-2 border-blue-600`
+      : `px-3 py-2 ${
+          theme === 'dark'
+            ? 'text-gray-300 hover:text-blue-400'
+            : 'text-gray-700 hover:text-blue-600'
+        }`
 
   return (
     <nav
@@ -47,35 +54,68 @@ const Navbar = () => {
             </button>
             <NavLink
               to='/'
-              className={linkClass}
+              className={({ isActive }) =>
+                linkClass(isActive && location.hash === '')
+              }
               end
-              onClick={() => {
-                // Siempre haz scroll al elemento con id 'inicio'
-                setTimeout(() => {
-                  const el = document.getElementById('inicio')
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' })
-                  } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                }, 100)
+              onClick={(e) => {
+                e.preventDefault()
+                if (location.pathname !== '/') {
+                  navigate('/')
+                } else if (location.hash !== '') {
+                  window.location.hash = ''
+                }
+                const el = document.getElementById('inicio')
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
               }}
             >
               Inicio
             </NavLink>
-            <NavLink to='/#servicios' className={linkClass}>
+            <NavLink
+              to='/#servicios'
+              className={() => linkClass(isHashActive('#servicios'))}
+            >
               Servicios
             </NavLink>
-            <NavLink to='/productos' className={linkClass}>
+            <NavLink
+              to='/productos'
+              className={({ isActive }) => linkClass(isActive)}
+            >
               Productos
             </NavLink>
-            <NavLink to='/#contacto' className={linkClass}>
+            <NavLink
+              to='/#contacto'
+              className={() => linkClass(isHashActive('#contacto'))}
+            >
               Contacto
             </NavLink>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className='md:hidden flex items-center'>
+          {/* Mobile Menu Button + Theme Switch */}
+          <div className='md:hidden flex items-center gap-2'>
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className={`p-2 rounded ${
+                theme === 'dark'
+                  ? 'bg-gray-700 text-white'
+                  : 'bg-gray-200 text-gray-900'
+              } transition`}
+              aria-label='Cambiar tema'
+            >
+              {theme === 'dark' ? (
+                <span role='img' aria-label='Oscuro'>
+                  🌙
+                </span>
+              ) : (
+                <span role='img' aria-label='Claro'>
+                  ☀️
+                </span>
+              )}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none'
@@ -108,51 +148,98 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className='md:hidden'>
-          <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-            <NavLink
-              to='/'
-              className='block text-gray-700 hover:text-blue-600 px-3 py-2'
-              end
-              onClick={() => {
-                setIsOpen(false)
-                setTimeout(() => {
-                  const el = document.getElementById('inicio')
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' })
-                  } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                }, 100)
-              }}
-            >
-              Inicio
-            </NavLink>
-            <NavLink
-              to='/#servicios'
-              className='block text-gray-700 hover:text-blue-600 px-3 py-2'
-              onClick={() => setIsOpen(false)}
-            >
-              Servicios
-            </NavLink>
-            <NavLink
-              to='/productos'
-              className='block text-gray-700 hover:text-blue-600 px-3 py-2'
-              onClick={() => setIsOpen(false)}
-            >
-              Productos
-            </NavLink>
-            <NavLink
-              to='/#contacto'
-              className='block text-gray-700 hover:text-blue-600 px-3 py-2'
-              onClick={() => setIsOpen(false)}
-            >
-              Contacto
-            </NavLink>
-          </div>
+      <div
+        className={`md:hidden fixed top-16 left-0 w-full z-50 transition-all duration-300 overflow-hidden ${
+          isOpen ? 'max-h-[400px] animate-slide-down' : 'max-h-0'
+        } ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg`}
+        style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
+      >
+        <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
+          <NavLink
+            to='/'
+            className={({ isActive }) =>
+              `block px-3 py-2 font-semibold ${
+                isActive && location.hash === ''
+                  ? theme === 'dark'
+                    ? 'text-blue-400 border-b-2 border-blue-600'
+                    : 'text-blue-600 border-b-2 border-blue-600'
+                  : theme === 'dark'
+                  ? 'text-gray-300 hover:text-blue-400'
+                  : 'text-gray-700 hover:text-blue-600'
+              }`
+            }
+            end
+            onClick={(e) => {
+              setIsOpen(false)
+              e.preventDefault()
+              if (location.pathname !== '/') {
+                navigate('/')
+              } else if (location.hash !== '') {
+                window.location.hash = ''
+              }
+              const el = document.getElementById('inicio')
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth' })
+              } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }
+            }}
+          >
+            Inicio
+          </NavLink>
+          <NavLink
+            to='/#servicios'
+            className={() =>
+              `block px-3 py-2 font-semibold ${
+                location.hash === '#servicios'
+                  ? theme === 'dark'
+                    ? 'text-blue-400 border-b-2 border-blue-600'
+                    : 'text-blue-600 border-b-2 border-blue-600'
+                  : theme === 'dark'
+                  ? 'text-gray-300 hover:text-blue-400'
+                  : 'text-gray-700 hover:text-blue-600'
+              }`
+            }
+            onClick={() => setIsOpen(false)}
+          >
+            Servicios
+          </NavLink>
+          <NavLink
+            to='/productos'
+            className={({ isActive }) =>
+              `block px-3 py-2 font-semibold ${
+                isActive
+                  ? theme === 'dark'
+                    ? 'text-blue-400 border-b-2 border-blue-600'
+                    : 'text-blue-600 border-b-2 border-blue-600'
+                  : theme === 'dark'
+                  ? 'text-gray-300 hover:text-blue-400'
+                  : 'text-gray-700 hover:text-blue-600'
+              }`
+            }
+            onClick={() => setIsOpen(false)}
+          >
+            Productos
+          </NavLink>
+          <NavLink
+            to='/#contacto'
+            className={() =>
+              `block px-3 py-2 font-semibold ${
+                location.hash === '#contacto'
+                  ? theme === 'dark'
+                    ? 'text-blue-400 border-b-2 border-blue-600'
+                    : 'text-blue-600 border-b-2 border-blue-600'
+                  : theme === 'dark'
+                  ? 'text-gray-300 hover:text-blue-400'
+                  : 'text-gray-700 hover:text-blue-600'
+              }`
+            }
+            onClick={() => setIsOpen(false)}
+          >
+            Contacto
+          </NavLink>
         </div>
-      )}
+      </div>
     </nav>
   )
 }
