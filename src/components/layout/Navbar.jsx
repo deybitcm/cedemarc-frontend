@@ -27,15 +27,16 @@ const Navbar = () => {
               to='/'
               className={linkClass}
               end
-              onClick={(e) => {
-                // Si ya estás en la home, haz scroll al inicio
-                if (
-                  window.location.hash === '' ||
-                  window.location.hash === '#/'
-                ) {
-                  e.preventDefault()
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
-                }
+              onClick={() => {
+                // Siempre haz scroll al elemento con id 'inicio'
+                setTimeout(() => {
+                  const el = document.getElementById('inicio')
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' })
+                  } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                }, 100)
               }}
             >
               Inicio
@@ -94,32 +95,45 @@ const Navbar = () => {
       {isOpen && (
         <div className='md:hidden'>
           <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-            <Link
+            <NavLink
               to='/'
-              onClick={() => setIsOpen(false)}
               className='block text-gray-700 hover:text-blue-600 px-3 py-2'
+              end
+              onClick={() => {
+                setIsOpen(false)
+                setTimeout(() => {
+                  const el = document.getElementById('inicio')
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' })
+                  } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                }, 100)
+              }}
             >
               Inicio
-            </Link>
-            <a
-              href='#servicios'
+            </NavLink>
+            <NavLink
+              to='/#servicios'
               className='block text-gray-700 hover:text-blue-600 px-3 py-2'
+              onClick={() => setIsOpen(false)}
             >
               Servicios
-            </a>
-            <Link
+            </NavLink>
+            <NavLink
               to='/productos'
-              onClick={() => setIsOpen(false)}
               className='block text-gray-700 hover:text-blue-600 px-3 py-2'
+              onClick={() => setIsOpen(false)}
             >
               Productos
-            </Link>
-            <a
-              href='#contacto'
+            </NavLink>
+            <NavLink
+              to='/#contacto'
               className='block text-gray-700 hover:text-blue-600 px-3 py-2'
+              onClick={() => setIsOpen(false)}
             >
               Contacto
-            </a>
+            </NavLink>
           </div>
         </div>
       )}

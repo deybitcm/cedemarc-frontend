@@ -1,4 +1,5 @@
 import oilChangeVideo from '../../assets/videos/oil-change.mp4'
+import { NavLink } from 'react-router-dom'
 
 const Hero = () => {
   return (
@@ -31,18 +32,18 @@ const Hero = () => {
           className='flex justify-center space-x-4 animate-fade-in opacity-0'
           style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
         >
-          <a
-            href='#servicios'
+          <NavLink
+            to='/#servicios'
             className='bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1'
           >
             Nuestros Servicios
-          </a>
-          <a
-            href='#contacto'
+          </NavLink>
+          <NavLink
+            to='/#contacto'
             className='bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1'
           >
             Contáctanos
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
