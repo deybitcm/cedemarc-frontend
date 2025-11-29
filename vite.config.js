@@ -12,7 +12,7 @@ import react from '@vitejs/plugin-react'
 //     : '/cedemarc-frontend/'
 
 export default defineConfig({
-  base: 'https://cedemarc.com/', // Ajusta esto según tu entorno
+  base: 'https://www.cedemarc.com/', // Ajusta esto según tu entorno
   plugins: [react()],
   css: {
     postcss: './postcss.config.cjs',
