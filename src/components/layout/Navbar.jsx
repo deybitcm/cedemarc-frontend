@@ -16,8 +16,8 @@ const Navbar = () => {
     active
       ? `px-3 py-2 font-semibold ${
           theme === 'dark'
-            ? 'text-blue-400 border-b-2 border-blue-400'
-            : 'text-yellow-400 border-b-2 border-yellow-400'
+            ? 'text-blue-400 border-b border-blue-300'
+            : 'text-yellow-400 border-b border-yellow-200'
         }`
       : `px-3 py-2 ${
           theme === 'dark'
@@ -32,10 +32,19 @@ const Navbar = () => {
       }`}
     >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-between h-16'>
+        <div className='flex justify-between h-12'>
           <div className='flex items-center'>
             <div className='flex-shrink-0'>
-              <Link to='/' className='text-2xl font-bold text-white'>
+              <Link
+                to='/'
+                className='text-xl font-bold text-white'
+                style={{
+                  fontFamily: 'Science Gothic, sans-serif',
+                  fontWeight: 400,
+                  fontStyle: 'regular',
+                  fontVariationSettings: '"slnt" 0, "wdth" 100, "CTRS" 0',
+                }}
+              >
                 CEDEMARC
               </Link>
             </div>
@@ -43,17 +52,6 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className='hidden md:flex items-center space-x-4'>
-            <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className={`ml-4 px-3 py-2 rounded ${
-                theme === 'dark'
-                  ? 'bg-gray-700 text-white'
-                  : 'bg-blue-700 text-white'
-              } transition`}
-              aria-label='Cambiar tema'
-            >
-              {theme === 'dark' ? '🌙 Oscuro' : '☀️ Claro'}
-            </button>
             <NavLink
               to='/'
               className={({ isActive }) =>
@@ -95,6 +93,19 @@ const Navbar = () => {
             >
               Contacto
             </NavLink>
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className={`ml-4 w-8 h-8 rounded border-0 flex items-center justify-center shadow-lg transition-all duration-200 ease-in-out text-base cursor-pointer
+                ${
+                  theme === 'dark'
+                    ? 'bg-gray-700 text-white  hover:bg-blue-900 hover:scale-110'
+                    : 'bg-blue-700 text-white  hover:bg-yellow-400 hover:scale-110'
+                }
+              `}
+              aria-label='Cambiar tema'
+            >
+              {theme === 'dark' ? '🌙' : '☀️'}
+            </button>
           </div>
 
           {/* Mobile Menu Button + Theme Switch */}

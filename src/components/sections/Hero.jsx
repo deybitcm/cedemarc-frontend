@@ -1,6 +1,6 @@
 import oilChangeVideo from '../../assets/videos/oil-change.mp4'
 import { NavLink } from 'react-router-dom'
-import logoCedemarcBlanco from '../../assets/logo_blanco_v3.png'
+import logoCedemarcBlanco from '../../assets/logo_cedemarc_principal_v2.png'
 
 const Hero = () => {
   return (
@@ -24,10 +24,10 @@ const Hero = () => {
           src={logoCedemarcBlanco}
           alt='Logo Cedemarc'
           className='mx-auto mb-4 animate-slide-down'
-          style={{ maxWidth: '650px', width: '100%' }}
+          style={{ maxWidth: '400px', width: '100%' }}
         />
         <p
-          className='text-xl sm:text-2xl text-gray-300 mb-8 animate-slide-up opacity-0'
+          className='text-2xl sm:text-3xl text-gray-300 mb-8 font-medium animate-slide-up opacity-0'
           style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
         >
           Expertos en lubricantes y filtros para tu vehículo
@@ -38,15 +38,15 @@ const Hero = () => {
         >
           <NavLink
             to='/#servicios'
-            className='bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1'
+            className='bg-blue-600 text-white px-7 py-3 rounded-lg font-semibold shadow-lg border border-blue-300 hover:scale-105 hover:shadow-xl hover:bg-blue-700 transition-all duration-200 ease-in-out'
           >
-            Nuestros Servicios
+            Ver servicios
           </NavLink>
           <NavLink
             to='/#contacto'
-            className='bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1'
+            className='border border-white text-white px-7 py-3 rounded-lg font-semibold shadow-md hover:scale-105 hover:shadow-xl hover:bg-white hover:text-blue-700 transition-all duration-200 ease-in-out'
           >
-            Contáctanos
+            Contactar
           </NavLink>
         </div>
       </div>
