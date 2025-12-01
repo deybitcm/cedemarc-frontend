@@ -14,7 +14,7 @@ const Hero = () => {
         muted
         playsInline
         className='absolute w-full h-full object-cover'
-        style={{ filter: 'brightness(0.5)' }}
+        style={{ filter: 'brightness(0.7)' }}
       >
         <source src={oilChangeVideo} type='video/mp4' />
       </video>

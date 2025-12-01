@@ -114,8 +114,8 @@ const Navbar = () => {
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className={`p-2 rounded ${
                 theme === 'dark'
-                  ? 'bg-gray-700 text-white'
-                  : 'bg-gray-200 text-gray-900'
+                  ? 'bg-gray-700 text-white  hover:bg-blue-900 hover:scale-110'
+                  : 'bg-blue-700 text-white  hover:bg-yellow-400 hover:scale-110'
               } transition`}
               aria-label='Cambiar tema'
             >
@@ -131,7 +131,13 @@ const Navbar = () => {
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none'
+              className={`inline-flex items-center justify-center p-2 rounded-md border-0 transition-all duration-200 focus:outline-none
+                ${
+                  theme === 'dark'
+                    ? 'bg-gray-700 border-blue-400 text-white hover:bg-blue-900 hover:text-blue-400'
+                    : 'bg-blue-700 border-yellow-300 text-white hover:bg-yellow-400 hover:text-blue-700'
+                }
+              `}
             >
               <svg
                 className='h-6 w-6'
