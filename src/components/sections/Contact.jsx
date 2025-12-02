@@ -176,7 +176,7 @@ const Contact = () => {
                 </div>
               </div>
               {/* Google Maps embed */}
-              <div className='mt-6'>
+              <div className='mt-6 justify-center items-center'>
                 <div className='w-full h-56 sm:h-64 rounded-md overflow-hidden'>
                   <iframe
                     title='Ubicación CEDEMARC'
@@ -189,7 +189,7 @@ const Contact = () => {
                     referrerPolicy='no-referrer-when-downgrade'
                   />
                 </div>
-                <div className='mt-3'>
+                <div className='mt-3 justify-center text-center'>
                   <a
                     href='https://maps.app.goo.gl/cXtyzM9Nzx6H6yva8'
                     target='_blank'
