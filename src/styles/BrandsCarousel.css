@@ -6,6 +6,7 @@
   transition: 0.5s;
   cursor: pointer;
   z-index: 1;
+
 }
 
 .logo-brand:hover {
@@ -14,6 +15,12 @@
   transition: transform 0.3s ease-in-out;
   /* Animación suave */
 }
+
+/* Cambiar a escala de grises si no esta en hover la imagen logo */
+/* .logo-brand:not(:hover) {
+  filter: grayscale(50%);
+  transition: filter 0.5s ease-in-out;
+} */
 
 .carousel-container {
   margin: 100px auto;

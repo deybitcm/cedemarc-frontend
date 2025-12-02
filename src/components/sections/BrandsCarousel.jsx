@@ -15,6 +15,10 @@ import millard from '../../assets/brands/logo-millard-3.svg'
 import wb from '../../assets/brands/logo-wb.svg'
 import hengst from '../../assets/brands/logo-hengst.svg'
 import ihp from '../../assets/brands/logo-ihp.svg'
+import repsol_dark from '../../assets/brands/logo-repsol-dark.svg'
+import fleetguard_dark from '../../assets/brands/logo-fleetguard-dark.svg'
+import wv_dark from '../../assets/brands/logo-wb-dark.svg'
+import hengst_dark from '../../assets/brands/logo-hengst-dark.svg'
 import '../../styles/BrandsCarousel.css'
 
 const BrandsCarousel = () => {
@@ -27,11 +31,19 @@ const BrandsCarousel = () => {
     mobil,
     motul,
     prestone,
-    repsol,
+    theme === 'dark' ? repsol_dark : repsol,
     shell,
   ]
 
-  const brandLogosFiltros = [mann, millard, sakura, fleetguard, wb, hengst, ihp]
+  const brandLogosFiltros = [
+    mann,
+    millard,
+    sakura,
+    theme === 'dark' ? fleetguard_dark : fleetguard,
+    theme === 'dark' ? wv_dark : wb,
+    theme === 'dark' ? hengst_dark : hengst,
+    ihp,
+  ]
 
   return (
     <section
