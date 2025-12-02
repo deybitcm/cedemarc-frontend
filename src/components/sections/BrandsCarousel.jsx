@@ -19,6 +19,7 @@ import repsol_dark from '../../assets/brands/logo-repsol-dark.svg'
 import fleetguard_dark from '../../assets/brands/logo-fleetguard-dark.svg'
 import wv_dark from '../../assets/brands/logo-wb-dark.svg'
 import hengst_dark from '../../assets/brands/logo-hengst-dark.svg'
+import millard_dark from '../../assets/brands/logo-millard-dark.svg'
 import '../../styles/BrandsCarousel.css'
 
 const BrandsCarousel = () => {
@@ -37,7 +38,7 @@ const BrandsCarousel = () => {
 
   const brandLogosFiltros = [
     mann,
-    millard,
+    theme === 'dark' ? millard_dark : millard,
     sakura,
     theme === 'dark' ? fleetguard_dark : fleetguard,
     theme === 'dark' ? wv_dark : wb,
