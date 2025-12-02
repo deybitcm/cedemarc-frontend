@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react'
 import ThemeContext from '../../ThemeContext'
-// import '../../styles/Contact.css'
 
 const Contact = () => {
   const [name, setName] = useState('')

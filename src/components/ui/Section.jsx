@@ -10,29 +10,21 @@ import '../../styles/Section.css'
  *
  * Props:
  * - children: The content to display inside the section.
- * - columns: Number of columns (1, 2, or 3). Defaults to 1.
  * - className: Additional class names for custom styling.
  * - variant: Determines the section style ("primary" or "secondary"). Defaults to "primary".
+ * - components: A list of JSX components to render as columns. Maximum of 3 components.
  * - title: Optional title to display at the top of the section.
  * - subtitle: Optional subtitle to display below the title.
  */
 const Section = ({
   id,
-  children,
-  columns = 1,
+  components = [],
   className = '',
   variant = 'primary',
   title,
   subtitle,
 }) => {
   const { theme } = useContext(ThemeContext)
-
-  const columnClass =
-    columns === 2
-      ? 'ui-section--two-columns'
-      : columns === 3
-      ? 'ui-section--three-columns'
-      : ''
 
   const themeClass =
     variant === 'primary'
@@ -43,58 +35,53 @@ const Section = ({
       ? 'bg-gray-800 text-white'
       : 'bg-gray-100 text-gray-900'
 
-  const themeTextClassTitle =
-    variant === 'primary'
-      ? theme === 'dark'
-        ? 'text-white'
-        : 'text-dark'
-      : theme === 'dark'
-      ? 'text-white'
-      : 'text-dark'
-
-  const themeTextClassSubtitle =
-    variant === 'primary'
-      ? theme === 'dark'
-        ? 'text-gray-300'
-        : 'text-gray-600'
-      : theme === 'dark'
-      ? 'text-gray-300'
-      : 'text-gray-600'
+  const limitedComponents = Array.isArray(components)
+    ? components.slice(0, 3)
+    : []
+  const columnClass = `h-full grid grid-cols-${limitedComponents.length} gap-4`
 
   return (
     <section
       id={id}
-      className={`relative flex flex-col items-center justify-center overflow-hidden ${columnClass} ${themeClass} ${className}`.trim()}
+      className={`relative flex flex-col items-center overflow-hidden ${themeClass} ${className}`.trim()}
     >
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  text-center'>
-        {title && (
-          <h2
-            className={` text-3xl font-extrabold sm:text-4xl animate-fade-in ${themeTextClassTitle}`}
-          >
-            {title}
-          </h2>
-        )}
-        {subtitle && (
-          <p
-            className={` mt-4 text-xl animate-fade-in ${themeTextClassSubtitle}`}
-            style={{ animationDelay: '0.2s' }}
-          >
-            {subtitle}
-          </p>
-        )}
+      {title && (
+        <h2
+          className={`text-3xl font-extrabold sm:text-4xl animate-fade-in ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}
+        >
+          {title}
+        </h2>
+      )}
+      {subtitle && (
+        <p
+          className={`mt-4 text-xl animate-fade-in ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}
+          style={{ animationDelay: '0.2s' }}
+        >
+          {subtitle}
+        </p>
+      )}
+      <div className={`w-full ${columnClass}`}>
+        {limitedComponents.map((Component, index) => (
+          <div key={index} className='col-span-1'>
+            {Component}
+          </div>
+        ))}
       </div>
-      {children}
     </section>
   )
 }
 
 Section.propTypes = {
   id: PropTypes.string,
-  /** Content to display inside the section */
-  children: PropTypes.node.isRequired,
-
-  /** Number of columns (1, 2, or 3). Defaults to 1. */
-  columns: PropTypes.oneOf([1, 2, 3]).isRequired,
+  /** A list of JSX components to render as columns. Maximum of 3 components. */
+  components: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 
   /** Additional class names for custom styling */
   className: PropTypes.string,

@@ -37,19 +37,20 @@ const Services = () => {
       className='py-20'
       title='Nuestros Servicios'
       subtitle='Soluciones integrales para el cuidado de tu vehículo'
-    >
-      <CardGrid rows={2} columns={2} className='mt-20 lg:mx-40'>
-        {services.map((service, index) => (
-          <Card
-            key={index}
-            title={service.title}
-            subtitle={service.description}
-            className='flex flex-col items-center'
-            externalComponent={<Icon name={service.icon}></Icon>}
-          ></Card>
-        ))}
-      </CardGrid>
-    </Section>
+      components={[
+        <CardGrid key={0} rows={2} columns={2} className='mt-20 lg:mx-40'>
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              title={service.title}
+              subtitle={service.description}
+              className='flex flex-col items-center'
+              externalComponent={<Icon name={service.icon}></Icon>}
+            ></Card>
+          ))}
+        </CardGrid>,
+      ]}
+    ></Section>
   )
 }
 

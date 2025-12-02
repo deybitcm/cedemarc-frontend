@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useContext } from 'react'
 import ThemeContext from '../../ThemeContext'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import Image from '../ui/Image'
+import logo_cedemarc_horz from '../../assets/images/logo-cedemarc-simplificado.svg'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -28,11 +30,11 @@ const Navbar = () => {
   return (
     <nav
       className={`shadow-lg fixed w-full z-10 ${
-        theme === 'dark' ? 'bg-gray-800' : 'bg-blue-800'
-      }`}
+        theme === 'dark' ? 'bg-gray-800' : 'bg-[#025dcd]'
+      } `}
     >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-between h-12'>
+        <div className='flex justify-between h-16'>
           <div className='flex items-center'>
             <div className='flex-shrink-0'>
               <Link
@@ -45,7 +47,11 @@ const Navbar = () => {
                   fontVariationSettings: '"slnt" 0, "wdth" 100, "CTRS" 0',
                 }}
               >
-                CEDEMARC
+                <Image
+                  src={logo_cedemarc_horz}
+                  alt='Logo CEDEMARC'
+                  className='w-32'
+                />
               </Link>
             </div>
           </div>
@@ -111,6 +117,8 @@ const Navbar = () => {
           {/* Mobile Menu Button + Theme Switch */}
           <div className='md:hidden flex items-center gap-2'>
             <button
+              title='theme button'
+              type='button'
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className={`p-2 rounded ${
                 theme === 'dark'
@@ -130,6 +138,8 @@ const Navbar = () => {
               )}
             </button>
             <button
+              type='button'
+              title='menu-bar'
               onClick={() => setIsOpen(!isOpen)}
               className={`inline-flex items-center justify-center p-2 rounded-md border-0 transition-all duration-200 focus:outline-none
                 ${
