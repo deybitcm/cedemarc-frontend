@@ -1,10 +1,10 @@
 import ThemeContext from './ThemeContext'
-import './App.css'
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
+import BrandsCarousel from './components/sections/BrandsCarousel'
 import Services from './components/sections/Services'
 import Contact from './components/sections/Contact'
 import Products from './pages/Products'
@@ -64,6 +64,7 @@ function App() {
               element={
                 <AnimatedPage>
                   <Hero />
+                  <BrandsCarousel />
                   <Services />
                   <Contact />
                 </AnimatedPage>

@@ -1,0 +1,97 @@
+.logo-brand {
+  width: 200px;
+  height: auto;
+  aspect-ratio: auto;
+  max-height: 250px;
+  transition: 0.5s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.logo-brand:hover {
+  transform: scale(1.5);
+  /* Agrandar el logo al hacer hover */
+  transition: transform 0.3s ease-in-out;
+  /* Animación suave */
+}
+
+.carousel-container {
+  margin: 100px auto;
+  width: 100%;
+  display: flex;
+  overflow-x: hidden;
+  /* Restringir el desbordamiento horizontal */
+  overflow-y: visible;
+  /* Permitir el desbordamiento vertical */
+  position: relative;
+  scroll-behavior: unset;
+
+  /* Permitir que las imágenes sobresalgan del contenedor */
+  /* overflow: visible; */
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-container:hover .carousel {
+  /* Pausar la animación de todas las listas al hacer hover en el contenedor */
+  animation-play-state: paused;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+  padding-right: 3em;
+  height: 150px;
+  width: max-content;
+  overflow: visible;
+  animation: infinite-scroll 35s linear infinite;
+}
+
+.carousel:hover {
+  /* Pausar la animación en hover */
+  animation-play-state: paused;
+}
+
+@keyframes infinite-scroll {
+  from {
+    translate: 0;
+  }
+
+  to {
+    translate: -100%;
+  }
+}
+
+.carousel-item {
+  flex: 0 0 11em;
+  padding-left: 3em;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  display: flex;
+}
+
+.carousel-fade {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      white,
+      transparent 40%,
+      transparent 90%,
+      white);
+}
+
+@media (max-width: 500px) {
+  .carousel-item {
+    flex: 0 0 10em;
+  }
+}
