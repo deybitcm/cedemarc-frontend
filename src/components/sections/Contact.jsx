@@ -1,10 +1,12 @@
 import { useState, useContext } from 'react'
 import ThemeContext from '../../ThemeContext'
+// import '../../styles/Contact.css'
 
 const Contact = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [phone, setPhone] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -13,12 +15,13 @@ const Contact = () => {
     // Create an Apps Script Web App that writes POSTed JSON to a Sheet,
     // then deploy it and paste the URL below into `SHEETS_WEBHOOK_URL`.
     const SHEETS_WEBHOOK_URL =
-      'https://script.google.com/macros/s/AKfycbzNyZvh1nN8CqHRYl8bP6leE0VPvMq-qpUEzGvhGixC6_tiMc8enN1Q5YvN9udvLdpfGw/exec'
+      'https://script.google.com/macros/s/AKfycbxOH3_EVJ7Dy5RVCqRPBUDNQT9BH-TwTloN99htJQMKEMm_wiTr4QIOGnqeh-zYsn7oHw/exec'
 
     const payload = {
       timestamp: new Date().toISOString(),
       name,
       email,
+      phone,
       message,
     }
 
@@ -41,7 +44,7 @@ const Contact = () => {
     }
 
     // Build WhatsApp message and open chat (fallback/primary)
-    const phone = '51921604711' // international format without +
+    const owner_phone = '51921604711' // international format without +
     const lines = [
       `Contacto desde web: ${name || 'Sin nombre'}`,
       `Email: ${email || 'No proporcionado'}`,
@@ -49,7 +52,7 @@ const Contact = () => {
       message || '',
     ]
     const text = encodeURIComponent(lines.join('\n'))
-    const url = `https://wa.me/${phone}?text=${text}`
+    const url = `https://wa.me/${owner_phone}?text=${text}`
     window.open(url, '_blank', 'noopener')
   }
 
@@ -241,6 +244,29 @@ const Contact = () => {
                 id='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+                  theme === 'dark'
+                    ? 'bg-gray-700 border-gray-700 text-white placeholder-gray-400'
+                    : 'bg-white border-gray-200 border-2  text-gray-900 placeholder-gray-400'
+                }`}
+              />
+            </div>
+
+            {/* Div para celular */}
+            <div>
+              <label
+                htmlFor='phone'
+                className={`block text-sm font-medium ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                }`}
+              >
+                Número de Teléfono o Celular
+              </label>
+              <input
+                type='tel'
+                id='phone'
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
                   theme === 'dark'
                     ? 'bg-gray-700 border-gray-700 text-white placeholder-gray-400'

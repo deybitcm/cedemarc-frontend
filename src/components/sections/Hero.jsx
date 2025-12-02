@@ -1,30 +1,21 @@
 import oilChangeVideo from '../../assets/videos/oil-change.mp4'
-import { NavLink } from 'react-router-dom'
-import logoCedemarcBlanco from '../../assets/logo_cedemarc_principal_v2.png'
+import logoCedemarcBlanco from '../../assets/images/logo_cedemarc_principal_v2.png'
+import Section from '../ui/Section'
+import Video from '../ui/Video'
+import Image from '../ui/Image'
+import Button from '../ui/Button'
 
 const Hero = () => {
   return (
-    <div
-      id='inicio'
-      className='relative h-screen flex items-center overflow-hidden'
-    >
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className='absolute w-full h-full object-cover'
-        style={{ filter: 'brightness(0.7)' }}
-      >
-        <source src={oilChangeVideo} type='video/mp4' />
-      </video>
-      <div className='absolute inset-0 bg-black opacity-40'></div>
-      <div className='relative z-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in'>
-        <img
+    <Section id='inicio' className=' h-screen'>
+      <Video src={oilChangeVideo} opacity={50} className='w-full h-full ' />
+      <div className='absolute z-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in'>
+        <Image
           src={logoCedemarcBlanco}
-          alt='Logo Cedemarc'
-          className='mx-auto mb-4 animate-slide-down'
-          style={{ maxWidth: '400px', width: '100%' }}
+          alt='Logo CEDEMARC'
+          className='mx-auto my-3 w-12 sm:w-64 md:w-72 lg:w-80 animate-slide-down opacity-0'
+          style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
+          width={400}
         />
         <p
           className='text-2xl sm:text-3xl text-gray-300 mb-8 font-medium animate-slide-up opacity-0'
@@ -33,24 +24,18 @@ const Hero = () => {
           Expertos en lubricantes y filtros para tu vehículo
         </p>
         <div
-          className='flex justify-center space-x-4 animate-fade-in opacity-0'
+          className='flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in opacity-0'
           style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
         >
-          <NavLink
-            to='/#servicios'
-            className='bg-blue-600 text-white px-7 py-3 rounded-lg font-semibold shadow-lg border border-blue-300 hover:scale-105 hover:shadow-xl hover:bg-blue-700 transition-all duration-200 ease-in-out'
-          >
+          <Button to='/#servicios' variant='primary' animation={true}>
             Ver servicios
-          </NavLink>
-          <NavLink
-            to='/#contacto'
-            className='border border-white text-white px-7 py-3 rounded-lg font-semibold shadow-md hover:scale-105 hover:shadow-xl hover:bg-white hover:text-blue-700 transition-all duration-200 ease-in-out'
-          >
+          </Button>
+          <Button to='/#contacto' variant='secondary' animation={true}>
             Contactar
-          </NavLink>
+          </Button>
         </div>
       </div>
-    </div>
+    </Section>
   )
 }
 
