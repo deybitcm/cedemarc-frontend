@@ -87,6 +87,7 @@ const Contact = () => {
       className={`py-20 sm:px-6 lg:px-8 `}
       title='Contáctanos'
       subtitle='Estamos aquí para atenderte'
+      columnsNumber={2}
       components={[
         <div
           key={0}

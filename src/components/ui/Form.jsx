@@ -11,7 +11,7 @@ const Form = ({ fields, onSubmit, buttonText }) => {
     <form
       className={`space-y-6 ${
         theme === 'dark' ? 'bg-gray-800' : 'bg-white'
-      } p-6 rounded-lg shadow-md`}
+      } p-6 rounded-lg border shadow-md`}
       onSubmit={onSubmit}
     >
       {fields.map((field) => (

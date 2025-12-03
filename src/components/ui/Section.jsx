@@ -23,6 +23,7 @@ const Section = ({
   variant = 'primary',
   title,
   subtitle,
+  columnsNumber = 1,
 }) => {
   const { theme } = useContext(ThemeContext)
 
@@ -35,12 +36,7 @@ const Section = ({
       ? 'bg-gray-800 text-white'
       : 'bg-gray-100 text-gray-900'
 
-  const limitedComponents = Array.isArray(components)
-    ? components.slice(0, 3)
-    : []
-  const columnClass = `h-full grid grid-cols-1 md:grid-cols-${
-    limitedComponents.length > 1 ? 2 : 1
-  } gap-4` // Adjust for single or two columns
+  const columnClass = `grid grid-cols-1 sm:grid-cols-${columnsNumber} gap-4` // Adjust for single column on small devices and dynamic columns on larger screens
 
   return (
     <section
@@ -66,8 +62,8 @@ const Section = ({
           {subtitle}
         </p>
       )}
-      <div className={`w-full ${columnClass}`}>
-        {limitedComponents.map((Component, index) => (
+      <div className={`w-full h-full ${columnClass}`}>
+        {components.map((Component, index) => (
           <div key={index}>{Component}</div>
         ))}
       </div>
@@ -76,6 +72,7 @@ const Section = ({
 }
 
 Section.propTypes = {
+  columnsNumber: PropTypes.oneOf([1, 2, 3]),
   id: PropTypes.string,
   /** A list of JSX components to render as columns. Maximum of 3 components. */
   components: PropTypes.oneOfType([

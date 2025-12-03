@@ -9,7 +9,7 @@ const Footer = () => {
     <footer
       className={`${
         theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-blue-800 text-white'
-      } py-10 mt-20`}
+      } py-10 `}
     >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8'>
         {/* Descubre Section */}
