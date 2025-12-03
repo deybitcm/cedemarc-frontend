@@ -38,7 +38,9 @@ const Section = ({
   const limitedComponents = Array.isArray(components)
     ? components.slice(0, 3)
     : []
-  const columnClass = `h-full grid grid-cols-${limitedComponents.length} gap-4`
+  const columnClass = `h-full grid grid-cols-1 md:grid-cols-${
+    limitedComponents.length > 1 ? 2 : 1
+  } gap-4` // Adjust for single or two columns
 
   return (
     <section
@@ -56,7 +58,7 @@ const Section = ({
       )}
       {subtitle && (
         <p
-          className={`mt-4 text-xl animate-fade-in ${
+          className={`mt-4 text-xl text-center lg:text-2xl  animate-fade-in ${
             theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
           }`}
           style={{ animationDelay: '0.2s' }}
@@ -66,9 +68,7 @@ const Section = ({
       )}
       <div className={`w-full ${columnClass}`}>
         {limitedComponents.map((Component, index) => (
-          <div key={index} className='col-span-1'>
-            {Component}
-          </div>
+          <div key={index}>{Component}</div>
         ))}
       </div>
     </section>

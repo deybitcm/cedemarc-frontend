@@ -3,14 +3,13 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Navbar from './components/layout/Navbar'
-import Hero from './components/sections/Hero'
-import BrandsCarousel from './components/sections/BrandsCarousel'
-import Services from './components/sections/Services'
-import Contact from './components/sections/Contact'
+import Footer from './components/layout/Footer'
+import Landing from './pages/Landing'
 import Products from './pages/Products'
 
 function ScrollToSection() {
   const location = useLocation()
+
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '')
@@ -20,8 +19,12 @@ function ScrollToSection() {
           el.scrollIntoView({ behavior: 'smooth' })
         }, 100)
       }
+    } else {
+      // Scroll to top when navigating to a route without a hash
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }, [location])
+
   return null
 }
 
@@ -51,34 +54,34 @@ function App() {
       <HashRouter>
         <ScrollToSection />
         <div
-          className={`min-h-screen ${
+          className={`min-h-screen flex flex-col ${
             theme === 'dark'
               ? 'bg-gray-900 text-white'
               : 'bg-white text-gray-900'
           }`}
         >
           <Navbar />
-          <Routes>
-            <Route
-              path='/'
-              element={
-                <AnimatedPage>
-                  <Hero />
-                  <BrandsCarousel />
-                  <Services />
-                  <Contact />
-                </AnimatedPage>
-              }
-            />
-            <Route
-              path='/productos'
-              element={
-                <AnimatedPage>
-                  <Products />
-                </AnimatedPage>
-              }
-            />
-          </Routes>
+          <main className='flex-grow'>
+            <Routes>
+              <Route
+                path='/'
+                element={
+                  <AnimatedPage>
+                    <Landing />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path='/productos'
+                element={
+                  <AnimatedPage>
+                    <Products />
+                  </AnimatedPage>
+                }
+              />
+            </Routes>
+          </main>
+          <Footer />
         </div>
       </HashRouter>
     </ThemeContext.Provider>
