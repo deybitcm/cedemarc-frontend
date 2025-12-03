@@ -63,7 +63,7 @@
 
 .carousel:hover {
   /* Pausar la animación en hover */
-  animation-play-state: paused;
+  /* animation-play-state: paused; */
 }
 
 @keyframes infinite-scroll {

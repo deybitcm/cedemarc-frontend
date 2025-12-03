@@ -21,6 +21,7 @@ import wv_dark from '../../assets/brands/logo-wb-dark.svg'
 import hengst_dark from '../../assets/brands/logo-hengst-dark.svg'
 import millard_dark from '../../assets/brands/logo-millard-dark.svg'
 import '../../styles/BrandsCarousel.css'
+import Section from '../ui/Section'
 
 const BrandsCarousel = () => {
   const { theme } = useContext(ThemeContext)
@@ -47,80 +48,66 @@ const BrandsCarousel = () => {
   ]
 
   return (
-    <section
+    <Section
       id='marcas'
-      className={`pt-20 pb-10 ${
-        theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
-      }`}
-    >
-      <div className='max-w-7xl mx-auto'>
-        <div className='text-center'>
-          <h2
-            className={`text-3xl font-extrabold sm:text-4xl ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}
-          >
-            Nuestros principales proveedores
-          </h2>
-          <p
-            className={`mt-4 text-xl ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-            }`}
-          >
-            Trabajamos con las mejores marcas del mercado
-          </p>
-        </div>
-
-        <div className='carousel-container'>
-          <div className='carousel'>
-            {brandLogosLubricantes.map((logo, index) => (
-              <div className='carousel-item' key={index}>
-                <img
-                  className='logo-brand'
-                  src={logo}
-                  alt={`Brand lubricante ${index}`}
-                />
-              </div>
-            ))}
+      className={`pt-20 pb-10`}
+      variant='primary'
+      title='Nuestros Proveedores'
+      subtitle='Trabajamos con las mejores marcas del mercado'
+      columnsNumber={1}
+      components={[
+        <div key={0} className='max-w-7xl mx-auto'>
+          <div className='carousel-container'>
+            <div className='carousel'>
+              {brandLogosLubricantes.map((logo, index) => (
+                <div className='carousel-item' key={index}>
+                  <img
+                    className='logo-brand'
+                    src={logo}
+                    alt={`Brand lubricante ${index}`}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className='carousel' aria-hidden='true'>
+              {brandLogosLubricantes.map((logo, index) => (
+                <div className='carousel-item' key={index}>
+                  <img
+                    className='logo-brand'
+                    src={logo}
+                    alt={`Brand lubricante duplicate ${index}`}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className='carousel' aria-hidden='true'>
-            {brandLogosLubricantes.map((logo, index) => (
-              <div className='carousel-item' key={index}>
-                <img
-                  className='logo-brand'
-                  src={logo}
-                  alt={`Brand lubricante duplicate ${index}`}
-                />
-              </div>
-            ))}
+          <div className='carousel-container'>
+            <div className='carousel'>
+              {brandLogosFiltros.map((logo, index) => (
+                <div className='carousel-item' key={index}>
+                  <img
+                    className='logo-brand'
+                    src={logo}
+                    alt={`Brand filtro ${index}`}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className='carousel' aria-hidden='true'>
+              {brandLogosFiltros.map((logo, index) => (
+                <div className='carousel-item' key={index}>
+                  <img
+                    className='logo-brand'
+                    src={logo}
+                    alt={`Brand filtro duplicate ${index}`}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className='carousel-container'>
-          <div className='carousel'>
-            {brandLogosFiltros.map((logo, index) => (
-              <div className='carousel-item' key={index}>
-                <img
-                  className='logo-brand'
-                  src={logo}
-                  alt={`Brand filtro ${index}`}
-                />
-              </div>
-            ))}
-          </div>
-          <div className='carousel' aria-hidden='true'>
-            {brandLogosFiltros.map((logo, index) => (
-              <div className='carousel-item' key={index}>
-                <img
-                  className='logo-brand'
-                  src={logo}
-                  alt={`Brand filtro duplicate ${index}`}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+        </div>,
+      ]}
+    ></Section>
   )
 }
 

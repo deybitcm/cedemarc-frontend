@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import ThemeContext from '../../ThemeContext'
 import PropTypes from 'prop-types'
-import '../../styles/Section.css'
 
 /**
  * Section Component
@@ -41,20 +40,19 @@ const Section = ({
   return (
     <section
       id={id}
-      className={`relative flex flex-col items-center overflow-hidden ${themeClass} ${className}`.trim()}
+      className={`relative flex flex-col items-center  overflow-hidden ${themeClass} ${className}`.trim()}
     >
       {title && (
         <h2
-          className={`text-3xl font-extrabold sm:text-4xl animate-fade-in ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}
+          className={`text-3xl text-center font-extrabold sm:text-4xl animate-fade-in 
+             ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
         >
           {title}
         </h2>
       )}
       {subtitle && (
         <p
-          className={`mt-4 text-xl text-center lg:text-2xl  animate-fade-in ${
+          className={`mt-4 mx-5 text-xl text-center lg:text-2xl  animate-fade-in ${
             theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
           }`}
           style={{ animationDelay: '0.2s' }}
