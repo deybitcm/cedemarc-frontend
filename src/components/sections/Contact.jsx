@@ -4,6 +4,7 @@ import Notification from '../ui/Notification'
 import Section from '../ui/Section'
 import Form from '../ui/Form'
 import ContactInfo from '../ui/ContactInfo'
+import Icon from '../ui/Icon'
 
 const Contact = () => {
   const [name, setName] = useState('')
@@ -81,6 +82,18 @@ const Contact = () => {
   }
 
   const { theme } = useContext(ThemeContext)
+
+  const prefix_for_telephone = (
+    <div
+      className={`flex items-center space-x-1 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-700'
+      }`}
+    >
+      <Icon name='peru_flag' width='w-6' />
+      <span className='ml-1 '>+51</span>
+    </div>
+  )
+
   return (
     <Section
       id='contacto'
@@ -146,6 +159,7 @@ const Contact = () => {
                 type: 'tel',
                 value: phone,
                 onChange: (e) => setPhone(e.target.value),
+                prefixContent: prefix_for_telephone,
               },
               {
                 id: 'message',

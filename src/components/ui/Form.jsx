@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import ThemeContext from '../../ThemeContext'
 import Button from './Button'
-import Icon from './Icon'
+// import Icon from './Icon'
 
 const Form = ({ fields, onSubmit, buttonText }) => {
   const { theme } = useContext(ThemeContext)
@@ -14,102 +14,128 @@ const Form = ({ fields, onSubmit, buttonText }) => {
       } p-6 rounded-lg  shadow-md`}
       onSubmit={onSubmit}
     >
-      {fields.map((field) => (
-        <div key={field.id} className='relative'>
-          {/* === TEL INPUT CON +51 === */}
-          {field.type === 'tel' ? (
-            <div className='relative'>
-              <div
-                className={`absolute inset-y-0 left-0 flex items-center pl-3 pr-2 border-r content-center 
-                ${
-                  theme === 'dark'
-                    ? 'text-white border-gray-600'
-                    : 'text-gray-700 border-gray-300'
-                }`}
-              >
-                <Icon name='peru_flag' />
-                <span>&nbsp;+51</span>
-              </div>
+      {fields.map((field) => {
+        const hasPrefix = !!field.prefixContent
 
-              <input
-                type='tel'
-                id={field.id}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder=' '
-                {...field.attributes}
-                className={`peer block w-full rounded-md pl-20 pr-3 pt-5 pb-2 bg-transparent border shadow-sm 
-                  focus:border-blue-500 focus:ring-blue-500
+        return (
+          <div key={field.id} className='relative'>
+            {/* CONTENEDOR CON PREFIX + INPUT */}
+            {hasPrefix ? (
+              <div className='flex items-stretch relative'>
+                {/* PREFIX */}
+                <div
+                  className={`flex items-center px-3 border rounded-l-md 
                   ${
                     theme === 'dark'
-                      ? 'border-gray-700 text-white'
-                      : 'border-gray-300 text-gray-900'
+                      ? 'text-white border-gray-700 bg-gray-700'
+                      : 'text-gray-700 border-gray-300 bg-gray-100'
                   }`}
-              />
+                >
+                  {field.prefixContent}
+                </div>
 
-              <label
-                htmlFor={field.id}
-                className={`absolute left-20 top-3 text-sm transition-all
-                  peer-placeholder-shown:top-4 
-                  peer-placeholder-shown:text-gray-400 
-                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500
-                  peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:text-xs
-                  ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}
-              >
-                {field.label}
-              </label>
-            </div>
-          ) : /* === TEXTAREA === */
-          field.type === 'textarea' ? (
-            <textarea
-              id={field.id}
-              rows='4'
-              placeholder=' '
-              value={field.value}
-              onChange={field.onChange}
-              {...field.attributes}
-              className={`peer block w-full rounded-md px-3 pt-5 pb-2 bg-transparent border shadow-sm  
-                  focus:border-blue-500 focus:ring-blue-500
-                  ${
-                    theme === 'dark'
-                      ? 'border-gray-700 text-white'
-                      : 'border-gray-300 text-gray-900'
-                  }
-                  ${field.attributes?.className || ''}`}
-            />
-          ) : (
-            /* === INPUTS NORMALES === */
-            <input
-              type={field.type}
-              id={field.id}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder=' '
-              {...field.attributes}
-              className={`peer block w-full rounded-md px-3 pt-5 pb-2 bg-transparent border shadow-sm 
-                  focus:border-blue-500 focus:ring-blue-500
-                  ${
-                    theme === 'dark'
-                      ? 'border-gray-700 text-white'
-                      : 'border-gray-300 text-gray-900'
-                  }
-                  ${field.attributes?.className || ''}`}
-            />
-          )}
+                {/* INPUT CON PREFIX - CONTENEDOR RELATIVO */}
+                <div className='relative flex-1'>
+                  {field.type === 'textarea' ? (
+                    <textarea
+                      id={field.id}
+                      rows='4'
+                      placeholder=' '
+                      value={field.value}
+                      onChange={field.onChange}
+                      {...field.attributes}
+                      className={`peer block w-full rounded-r-md px-3 pt-5 pb-2 bg-transparent border-t border-r border-b shadow-sm outline-none
+                        ${
+                          theme === 'dark'
+                            ? 'border-gray-700 text-white'
+                            : 'border-gray-300 text-gray-900'
+                        }
+                        ${field.attributes?.className || ''}`}
+                    />
+                  ) : (
+                    <input
+                      type={field.type}
+                      id={field.id}
+                      value={field.value}
+                      onChange={field.onChange}
+                      placeholder=' '
+                      {...field.attributes}
+                      className={`peer block w-full rounded-r-md px-3 pt-5 pb-2 bg-transparent border-t border-r border-b shadow-sm outline-none
+                        ${
+                          theme === 'dark'
+                            ? 'border-gray-700 text-white'
+                            : 'border-gray-300 text-gray-900'
+                        }
+                        ${field.attributes?.className || ''}`}
+                    />
+                  )}
 
-          {/* LABEL PARA CAMPOS NORMALES */}
-          {field.type !== 'tel' && (
-            <label
-              htmlFor={field.id}
-              className={`absolute left-3 top-4 text-sm transition-all peer-placeholder-shown:top-4  peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:text-xs ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-              }`}
-            >
-              {field.label}
-            </label>
-          )}
-        </div>
-      ))}
+                  {/* LABEL FLOTANTE PARA INPUT CON PREFIX */}
+                  <label
+                    htmlFor={field.id}
+                    className={`absolute left-3 top-4 text-sm transition-all pointer-events-none
+                      peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 
+                      peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 
+                      peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:text-xs 
+                      ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}
+                  >
+                    {field.label}
+                  </label>
+                </div>
+              </div>
+            ) : (
+              /* INPUT SIN PREFIX */
+              <>
+                {field.type === 'textarea' ? (
+                  <textarea
+                    id={field.id}
+                    rows='4'
+                    placeholder=' '
+                    value={field.value}
+                    onChange={field.onChange}
+                    {...field.attributes}
+                    className={`peer block w-full rounded-md px-3 pt-5 pb-2 bg-transparent border shadow-sm outline-none
+                      ${
+                        theme === 'dark'
+                          ? 'border-gray-700 text-white'
+                          : 'border-gray-300 text-gray-900'
+                      }
+                      ${field.attributes?.className || ''}`}
+                  />
+                ) : (
+                  <input
+                    type={field.type}
+                    id={field.id}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder=' '
+                    {...field.attributes}
+                    className={`peer block w-full rounded-md px-3 pt-5 pb-2 bg-transparent border shadow-sm outline-none
+                      ${
+                        theme === 'dark'
+                          ? 'border-gray-700 text-white'
+                          : 'border-gray-300 text-gray-900'
+                      }
+                      ${field.attributes?.className || ''}`}
+                  />
+                )}
+
+                {/* LABEL FLOTANTE PARA INPUT SIN PREFIX */}
+                <label
+                  htmlFor={field.id}
+                  className={`absolute left-3 top-4 text-sm transition-all pointer-events-none
+                    peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 
+                    peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 
+                    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:text-xs 
+                    ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}
+                >
+                  {field.label}
+                </label>
+              </>
+            )}
+          </div>
+        )
+      })}
 
       <Button type='submit' className='w-full'>
         {buttonText}
@@ -127,6 +153,7 @@ Form.propTypes = {
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       onChange: PropTypes.func.isRequired,
       attributes: PropTypes.object,
+      prefixContent: PropTypes.node, // Contenido antes del input (ej: código de país)
     })
   ).isRequired,
   onSubmit: PropTypes.func.isRequired,
