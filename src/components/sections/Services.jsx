@@ -45,7 +45,9 @@ const Services = () => {
               title={service.title}
               subtitle={service.description}
               className='flex flex-col items-center'
-              externalComponent={<Icon name={service.icon}></Icon>}
+              externalComponent={
+                <Icon name={service.icon} width='w-12' height='h-12'></Icon>
+              }
             ></Card>
           ))}
         </CardGrid>,

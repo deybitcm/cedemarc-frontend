@@ -10,8 +10,8 @@ const Form = ({ fields, onSubmit, buttonText }) => {
   return (
     <form
       className={`space-y-6 ${
-        theme === 'dark' ? 'bg-gray-800' : 'bg-white'
-      } p-6 rounded-lg border shadow-md`}
+        theme === 'dark' ? 'bg-gray-800' : 'bg-white border'
+      } p-6 rounded-lg  shadow-md`}
       onSubmit={onSubmit}
     >
       {fields.map((field) => (
@@ -27,8 +27,8 @@ const Form = ({ fields, onSubmit, buttonText }) => {
                     : 'text-gray-700 border-gray-300'
                 }`}
               >
-                <Icon name='peru_flag' size='w-6' />
-                +51
+                <Icon name='peru_flag' />
+                <span>&nbsp;+51</span>
               </div>
 
               <input
@@ -101,12 +101,9 @@ const Form = ({ fields, onSubmit, buttonText }) => {
           {field.type !== 'tel' && (
             <label
               htmlFor={field.id}
-              className={`absolute left-3 top-3 text-sm transition-all
-                peer-placeholder-shown:top-4 
-                peer-placeholder-shown:text-gray-400 
-                peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 
-                peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:text-xs
-                ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}
+              className={`absolute left-3 top-4 text-sm transition-all peer-placeholder-shown:top-4  peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:text-xs ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}
             >
               {field.label}
             </label>

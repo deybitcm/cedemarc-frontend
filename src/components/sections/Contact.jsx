@@ -2,8 +2,8 @@ import { useState, useContext } from 'react'
 import ThemeContext from '../../ThemeContext'
 import Notification from '../ui/Notification'
 import Section from '../ui/Section'
-import Icon from '../ui/Icon'
 import Form from '../ui/Form'
+import ContactInfo from '../ui/ContactInfo'
 
 const Contact = () => {
   const [name, setName] = useState('')
@@ -103,80 +103,24 @@ const Contact = () => {
             Información de Contacto
           </h3>
           <div className='space-y-4'>
-            <div className='flex items-start'>
-              <Icon
-                name='location_marker'
-                className='w-6 h-6 text-blue-600 mt-1'
-              />
-              <div className='ml-4'>
-                <p
-                  className={`${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                  }`}
-                >
-                  Av. Industrial #1759
-                  <br />
-                  Tacna, Perú
-                </p>
-              </div>
-            </div>
-
-            <div className='flex items-start'>
-              <Icon name='whatsapp' className='w-6 h-6 text-blue-600 mt-1' />
-              <div className='ml-4'>
-                <p
-                  className={`${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                  }`}
-                >
-                  <a
-                    href='https://wa.me/51921604711'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={`${
-                      theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
-                    } hover:underline`}
-                  >
-                    (+51) 921 604 711
-                  </a>
-                </p>
-              </div>
-            </div>
-
-            <div className='flex items-start'>
-              <Icon name='email' className='w-6 h-6 text-blue-600 mt-1' />
-              <div className='ml-4'>
-                <p
-                  className={`${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                  }`}
-                >
-                  cedemarc.dist.soluciones@gmail.com
-                </p>
-              </div>
-            </div>
-
-            <div className='flex items-start'>
-              <Icon name='facebook' className='w-6 h-6 text-blue-600 mt-1' />
-              <div className='ml-4'>
-                <p
-                  className={`${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                  }`}
-                >
-                  <a
-                    href='https://www.facebook.com/people/Cedemarc-Distribuciones-y-Soluciones-EIRL/61551694426305/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={`${
-                      theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
-                    } hover:underline`}
-                  >
-                    Cedemarc Distribuciones y Soluciones EIRL
-                  </a>
-                </p>
-              </div>
-            </div>
+            <ContactInfo
+              iconName='location_marker'
+              text='Av. Industrial #1759 Tacna, Perú'
+            />
+            <ContactInfo
+              iconName='whatsapp'
+              text='(+51) 921 604 711'
+              link='https://wa.me/51921604711'
+            />
+            <ContactInfo
+              iconName='email'
+              text='cedemarc.dist.soluciones@gmail.com'
+            />
+            <ContactInfo
+              iconName='facebook'
+              text='Cedemarc Distribuciones y Soluciones EIRL'
+              link='https://www.facebook.com/people/Cedemarc-Distribuciones-y-Soluciones-EIRL/61551694426305/'
+            />
           </div>
         </div>,
         <div key={1} className='mt-12  sm:mx-0 lg:mx-10'>
