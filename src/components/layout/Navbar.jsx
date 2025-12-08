@@ -7,14 +7,29 @@ import logo_cedemarc from '../../assets/images/logo-cedemarc-simplificado.svg'
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
+  const [showLogo, setShowLogo] = useState(false)
   const { theme, setTheme } = useContext(ThemeContext)
   const location = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
+    // Listen for hero visibility changes
+    const handleHeroVisibility = (event) => {
+      setShowLogo(!event.detail.visible)
+    }
+
+    window.addEventListener('heroVisibility', handleHeroVisibility)
+
+    return () => {
+      window.removeEventListener('heroVisibility', handleHeroVisibility)
+    }
+  }, [])
+
+  useEffect(() => {
     // Update activeSection based on the current route
     if (location.pathname !== '/') {
       setActiveSection(location.pathname.replace('/', '')) // Set to 'productos', etc.
+      setShowLogo(true) // Always show logo on other pages
       return
     }
 
@@ -76,7 +91,9 @@ const Navbar = () => {
                 <Image
                   src={logo_cedemarc}
                   alt='Logo CEDEMARC'
-                  className='w-32 '
+                  className={`w-32 transition-all duration-700 transform ${
+                    showLogo ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                  }`}
                 />
               </NavLink>
             </div>
