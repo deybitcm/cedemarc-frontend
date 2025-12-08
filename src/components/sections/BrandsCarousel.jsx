@@ -53,7 +53,7 @@ const BrandsCarousel = () => {
       className={`pt-20 pb-10`}
       variant='primary'
       title='Nuestros Proveedores'
-      subtitle='Trabajamos con las mejores marcas del mercado'
+      subtitle='Trabajamos con  una gran variedad de marcas reconocidas en el mercado'
       columnsNumber={1}
       components={[
         <div key={0} className='max-w-7xl mx-auto'>
