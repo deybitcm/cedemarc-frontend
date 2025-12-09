@@ -192,12 +192,12 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-16 left-0 w-full z-50 transition-all duration-300 overflow-hidden ${
-          isOpen ? 'max-h-[400px] animate-slide-down' : 'max-h-0'
-        } ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg`}
+        className={`md:hidden fixed top-16 left-0 w-full z-50 transition-all duration-10 overflow-hidden ${
+          isOpen ? 'max-h-[400px] ' : 'max-h-0'
+        } ${theme === 'dark' ? 'bg-gray-800' : 'bg-blue-800'} shadow-lg`}
         style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
       >
-        <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
+        <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col'>
           <NavLink
             to='/'
             className={linkClass('inicio')}
@@ -228,18 +228,18 @@ const Navbar = () => {
             Servicios
           </NavLink>
           <NavLink
-            to='/productos'
-            className={linkClass('productos')}
-            onClick={() => setIsOpen(false)}
-          >
-            Productos
-          </NavLink>
-          <NavLink
             to='/#contacto'
             className={linkClass('contacto')}
             onClick={() => setIsOpen(false)}
           >
             Contacto
+          </NavLink>
+          <NavLink
+            to='/productos'
+            className={linkClass('productos')}
+            onClick={() => setIsOpen(false)}
+          >
+            Productos
           </NavLink>
         </div>
       </div>
