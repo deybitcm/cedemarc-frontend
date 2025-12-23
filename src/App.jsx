@@ -6,6 +6,9 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Landing from './pages/Landing'
 import Products from './pages/Products'
+import PromotionModal from './components/ui/PromotionModal'
+import imagePromotionHorizontal from './assets/images/oferta-horizontal-2.png'
+import imagePromotionMobile from './assets/images/oferta-vertical-2.png'
 
 function ScrollToSection() {
   const location = useLocation()
@@ -45,6 +48,7 @@ AnimatedPage.propTypes = {
 
 function App() {
   const [theme, setTheme] = useState('light')
+  const [showPromotion, setShowPromotion] = useState(true)
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
   }, [theme])
@@ -61,6 +65,13 @@ function App() {
           }`}
         >
           <Navbar />
+          {showPromotion && (
+            <PromotionModal
+              imageSrc={imagePromotionHorizontal}
+              mobileImageSrc={imagePromotionMobile}
+              onClose={() => setShowPromotion(false)}
+            />
+          )}
           <main className='flex-grow'>
             <Routes>
               <Route
