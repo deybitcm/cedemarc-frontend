@@ -1,17 +1,11 @@
 import PropTypes from 'prop-types'
-import { useContext } from 'react'
-import ThemeContext from '../../ThemeContext'
 import Button from './Button'
 // import Icon from './Icon'
 
 const Form = ({ fields, onSubmit, buttonText }) => {
-  const { theme } = useContext(ThemeContext)
-
   return (
     <form
-      className={`space-y-6 ${
-        theme === 'dark' ? 'bg-gray-800' : 'bg-white border'
-      } p-6 rounded-lg  shadow-md`}
+      className='space-y-6 bg-bg-form border border-border-custom p-6 rounded-lg shadow-md'
       onSubmit={onSubmit}
     >
       {fields.map((field) => {
@@ -23,14 +17,7 @@ const Form = ({ fields, onSubmit, buttonText }) => {
             {hasPrefix ? (
               <div className='flex items-stretch relative'>
                 {/* PREFIX */}
-                <div
-                  className={`flex items-center px-3 border rounded-l-md 
-                  ${
-                    theme === 'dark'
-                      ? 'text-white border-gray-700 bg-gray-700'
-                      : 'text-gray-700 border-gray-300 bg-gray-100'
-                  }`}
-                >
+                <div className='flex items-center px-3 border border-border-custom rounded-l-md bg-bg-secondary text-text-primary'>
                   {field.prefixContent}
                 </div>
 
@@ -44,12 +31,7 @@ const Form = ({ fields, onSubmit, buttonText }) => {
                       value={field.value}
                       onChange={field.onChange}
                       {...field.attributes}
-                      className={`peer block w-full rounded-r-md px-3 pt-5 pb-2 bg-transparent border-t border-r border-b shadow-sm outline-none
-                        ${
-                          theme === 'dark'
-                            ? 'border-gray-700 text-white'
-                            : 'border-gray-300 text-gray-900'
-                        }
+                      className={`peer block w-full rounded-r-md px-3 pt-5 pb-2 bg-transparent border-t border-r border-b border-border-custom shadow-sm outline-none text-text-primary
                         ${field.attributes?.className || ''}`}
                     />
                   ) : (
@@ -60,12 +42,7 @@ const Form = ({ fields, onSubmit, buttonText }) => {
                       onChange={field.onChange}
                       placeholder=' '
                       {...field.attributes}
-                      className={`peer block w-full rounded-r-md px-3 pt-5 pb-2 bg-transparent border-t border-r border-b shadow-sm outline-none
-                        ${
-                          theme === 'dark'
-                            ? 'border-gray-700 text-white'
-                            : 'border-gray-300 text-gray-900'
-                        }
+                      className={`peer block w-full rounded-r-md px-3 pt-5 pb-2 bg-transparent border-t border-r border-b border-border-custom shadow-sm outline-none text-text-primary
                         ${field.attributes?.className || ''}`}
                     />
                   )}
@@ -77,7 +54,7 @@ const Form = ({ fields, onSubmit, buttonText }) => {
                       peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 
                       peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 
                       peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:text-xs 
-                      ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}
+                      text-text-secondary`}
                   >
                     {field.label}
                   </label>
@@ -94,12 +71,7 @@ const Form = ({ fields, onSubmit, buttonText }) => {
                     value={field.value}
                     onChange={field.onChange}
                     {...field.attributes}
-                    className={`peer block w-full rounded-md px-3 pt-5 pb-2 bg-transparent border shadow-sm outline-none
-                      ${
-                        theme === 'dark'
-                          ? 'border-gray-700 text-white'
-                          : 'border-gray-300 text-gray-900'
-                      }
+                    className={`peer block w-full rounded-md px-3 pt-5 pb-2 bg-transparent border border-border-custom shadow-sm outline-none text-text-primary
                       ${field.attributes?.className || ''}`}
                   />
                 ) : (
@@ -110,12 +82,7 @@ const Form = ({ fields, onSubmit, buttonText }) => {
                     onChange={field.onChange}
                     placeholder=' '
                     {...field.attributes}
-                    className={`peer block w-full rounded-md px-3 pt-5 pb-2 bg-transparent border shadow-sm outline-none
-                      ${
-                        theme === 'dark'
-                          ? 'border-gray-700 text-white'
-                          : 'border-gray-300 text-gray-900'
-                      }
+                    className={`peer block w-full rounded-md px-3 pt-5 pb-2 bg-transparent border border-border-custom shadow-sm outline-none text-text-primary
                       ${field.attributes?.className || ''}`}
                   />
                 )}
@@ -127,7 +94,7 @@ const Form = ({ fields, onSubmit, buttonText }) => {
                     peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 
                     peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 
                     peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:text-xs 
-                    ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}
+                    text-text-secondary`}
                 >
                   {field.label}
                 </label>

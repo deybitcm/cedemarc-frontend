@@ -1,16 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import ThemeContext from '../../ThemeContext'
-import { useContext } from 'react'
 
 const Footer = () => {
-  const { theme } = useContext(ThemeContext)
-
   return (
-    <footer
-      className={`${
-        theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-blue-800 text-white'
-      } py-10 `}
-    >
+    <footer className='bg-bg-footer text-button-secondary py-10'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8'>
         {/* Descubre Section */}
         <div>

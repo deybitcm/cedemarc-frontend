@@ -8,6 +8,73 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Color variables for themes */
+  --color-bg-primary: #ffffff;
+  /* White for light */
+  --color-bg-secondary: #7b7b7b19;
+  /* Gray-100 for light */
+  --color-bg-navbar: #1e40af;
+  /* Blue-800 for light */
+  --color-bg-footer: #1e40af;
+  /* Blue-800 for light */
+  --color-bg-card: #ffffff;
+  /* Gray-100 for light */
+  --color-bg-form: #ffffff;
+  /* White for light */
+  --color-text-primary: #111827;
+  /* Gray-900 for light */
+  --color-text-secondary: #2e2e2e;
+  /* Gray-500 for light */
+  --color-text-navbar: #ffffff;
+  /* White for light */
+  --color-accent: #fbbf24;
+  /* Yellow-400 for light */
+  --color-link-accent: #2563eb;
+  /* Blue-600 for light */
+  --color-link-accent-hover: #1d4ed8;
+  /* Blue-700 for light */
+  --color-accent-hover: #f59e0b;
+  /* Yellow-500 for light */
+  --color-button-primary: #2563eb;
+  /* Blue-600 for light */
+  --color-button-secondary: #ffffff;
+  /* White for light */
+  --color-border: #d1d5db;
+  /* Gray-300 for light */
+}
+
+.dark {
+  --color-bg-primary: #111827;
+  /* Gray-900 for dark */
+  --color-bg-secondary: #1f2937;
+  /* Gray-700 for dark */
+  --color-bg-navbar: #1f2937;
+  /* Gray-800 for dark */
+  --color-bg-footer: #1f2937;
+  /* Gray-800 for dark */
+  --color-bg-card: #374151;
+  /* Gray-700 for dark */
+  --color-bg-form: #7b7b7b19;
+  /* Gray-700 for dark */
+  --color-text-primary: #ffffff;
+  /* White for dark */
+  --color-text-secondary: #d1d5db;
+  /* Gray-300 for dark */
+  --color-text-navbar: #ffffff;
+  /* White for dark */
+  --color-accent: #60a5fa;
+  /* Blue-400 for dark */
+  --color-accent-hover: #3b82f6;
+  /* Blue-500 for dark */
+  --color-link-accent: #60a5fa;
+  /* Blue-400 for dark */
+  --color-link-accent-hover: #3b82f6;
+  --color-button-primary: #2563eb;
+  /* Blue-600 (same for dark) */
+  --color-button-secondary: #ffffff;
+  /* White (same for dark) */
+  --color-border: #4b5563;
+  /* Gray-600 for dark */
 }
 
 body {

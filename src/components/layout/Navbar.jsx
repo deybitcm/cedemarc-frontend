@@ -57,37 +57,16 @@ const Navbar = () => {
 
   const linkClass = (id) =>
     activeSection === id
-      ? `px-3 py-2 font-semibold ${
-          theme === 'dark'
-            ? 'text-blue-400 border-b border-blue-300'
-            : 'text-yellow-400 border-b border-yellow-200'
-        }`
-      : `px-3 py-2 ${
-          theme === 'dark'
-            ? 'text-gray-300 hover:text-blue-400'
-            : 'text-white hover:text-yellow-300'
-        }`
+      ? `px-3 py-2 font-semibold text-accent border-b border-accent`
+      : `px-3 py-2 text-text-navbar hover:text-accent-hover`
 
   return (
-    <nav
-      className={`shadow-lg fixed w-full z-10 ${
-        theme === 'dark' ? 'bg-gray-800' : 'bg-blue-800'
-      } `}
-    >
+    <nav className='shadow-lg fixed w-full z-10 bg-bg-navbar'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between h-16'>
           <div className='flex items-center'>
             <div className='flex-shrink-0'>
-              <NavLink
-                to='/'
-                className='text-xl font-bold text-white'
-                style={{
-                  fontFamily: 'Science Gothic, sans-serif',
-                  fontWeight: 400,
-                  fontStyle: 'regular',
-                  fontVariationSettings: '"slnt" 0, "wdth" 100, "CTRS" 0',
-                }}
-              >
+              <NavLink to='/'>
                 <Image
                   src={logo_cedemarc}
                   alt='Logo CEDEMARC'
@@ -115,13 +94,7 @@ const Navbar = () => {
             </NavLink>
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className={`ml-4 w-8 h-8 rounded border-0 flex items-center justify-center shadow-lg transition-all duration-200 ease-in-out text-base cursor-pointer
-                ${
-                  theme === 'dark'
-                    ? 'bg-gray-700 text-white  hover:bg-blue-900 hover:scale-110'
-                    : 'bg-blue-700 text-white  hover:bg-yellow-400 hover:scale-110'
-                }
-              `}
+              className='ml-4 w-8 h-8 rounded border-0 flex items-center justify-center shadow-lg transition-all duration-200 ease-in-out text-base cursor-pointer bg-button-primary text-button-secondary hover:bg-accent hover:scale-110'
               aria-label='Cambiar tema'
             >
               {theme === 'dark' ? '🌙' : '☀️'}
@@ -134,11 +107,7 @@ const Navbar = () => {
               title='theme button'
               type='button'
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className={`p-2 rounded ${
-                theme === 'dark'
-                  ? 'bg-gray-700 text-white  hover:bg-blue-900 hover:scale-110'
-                  : 'bg-blue-700 text-white  hover:bg-yellow-400 hover:scale-110'
-              } transition`}
+              className='p-2 rounded bg-button-primary text-button-secondary hover:bg-accent hover:scale-110 transition'
               aria-label='Cambiar tema'
             >
               {theme === 'dark' ? (
@@ -155,13 +124,7 @@ const Navbar = () => {
               type='button'
               title='menu-bar'
               onClick={() => setIsOpen(!isOpen)}
-              className={`inline-flex items-center justify-center p-2 rounded-md border-0 transition-all duration-200 focus:outline-none
-                ${
-                  theme === 'dark'
-                    ? 'bg-gray-700 border-blue-400 text-white hover:bg-blue-900 hover:text-blue-400'
-                    : 'bg-blue-700 border-yellow-300 text-white hover:bg-yellow-400 hover:text-blue-700'
-                }
-              `}
+              className='inline-flex items-center justify-center p-2 rounded-md border-0 transition-all duration-200 focus:outline-none bg-button-primary text-button-secondary hover:bg-accent hover:scale-110'
             >
               <svg
                 className='h-6 w-6'
@@ -194,7 +157,7 @@ const Navbar = () => {
       <div
         className={`md:hidden fixed top-16 left-0 w-full z-50 transition-all duration-10 overflow-hidden ${
           isOpen ? 'max-h-[400px] ' : 'max-h-0'
-        } ${theme === 'dark' ? 'bg-gray-800' : 'bg-blue-800'} shadow-lg`}
+        } bg-bg-navbar shadow-lg`}
         style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
       >
         <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col'>

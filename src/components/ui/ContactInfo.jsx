@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types'
 import Icon from './Icon'
-import { useContext } from 'react'
-import ThemeContext from '../../ThemeContext'
 
 /**
  * ContactInfo Component
@@ -14,39 +12,23 @@ import ThemeContext from '../../ThemeContext'
  * - link: Optional link URL for clickable text.
  */
 const ContactInfo = ({ iconName, text, link }) => {
-  const { theme } = useContext(ThemeContext)
-
   return (
     <div className='flex items-start'>
       <Icon name={iconName} />
       <div className='ml-4'>
         {link ? (
-          <p
-            className={`break-all ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-            }`}
-          >
+          <p className='break-all text-text-primary'>
             <a
               href={link}
               target='_blank'
               rel='noopener noreferrer'
-              className={`${
-                theme === 'dark'
-                  ? 'text-blue-400 hover:text-blue-500 hover:font-semibold'
-                  : 'text-blue-600 hover:text-blue-700 hover:font-semibold'
-              } hover:no-underline `}
+              className='text-link-accent hover:text-link-accent-hover hover:font-semibold hover:no-underline'
             >
               {text}
             </a>
           </p>
         ) : (
-          <p
-            className={`break-all ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-            }`}
-          >
-            {text}
-          </p>
+          <p className='break-all text-text-primary'>{text}</p>
         )}
       </div>
     </div>

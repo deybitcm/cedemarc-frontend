@@ -26,9 +26,10 @@ const Button = ({
     'text-center text-sm px-5 py-2 rounded-lg font-semibold shadow-lg transition-all duration-200 ease-in-out'
 
   const variantStyles = {
-    primary: 'bg-blue-600 text-white border border-blue-300 hover:bg-blue-700',
+    primary:
+      'bg-button-primary text-button-secondary border border-button-primary hover:bg-accent',
     secondary:
-      'border border-white text-white hover:bg-white hover:text-blue-700',
+      'border border-button-secondary text-button-secondary hover:bg-button-secondary hover:text-button-primary',
   }
 
   const animationStyles = animation ? 'hover:scale-105 hover:shadow-xl' : ''
