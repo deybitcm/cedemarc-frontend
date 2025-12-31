@@ -48,7 +48,7 @@ AnimatedPage.propTypes = {
 
 function App() {
   const [theme, setTheme] = useState('light')
-  const [showPromotion, setShowPromotion] = useState(true)
+  const [showPromotion, setShowPromotion] = useState(false)
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
   }, [theme])
