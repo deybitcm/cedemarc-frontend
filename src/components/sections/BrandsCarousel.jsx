@@ -56,7 +56,7 @@ const BrandsCarousel = () => {
       subtitle='Trabajamos con  una gran variedad de marcas reconocidas en el mercado'
       columnsNumber={1}
       components={[
-        <div key={0} className='max-w-7xl mx-auto'>
+        <div key={0} className=' mx-auto'>
           <div className='carousel-container'>
             <div className='carousel'>
               {brandLogosLubricantes.map((logo, index) => (

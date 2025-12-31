@@ -90,7 +90,7 @@ const Contact = () => {
   return (
     <Section
       id='contacto'
-      className={`py-20 sm:px-6 lg:px-8 `}
+      className={`py-20 sm:px-6 lg:px-8 max-w-7xl mx-auto`}
       title='Contáctanos'
       subtitle='Estamos aquí para atenderte'
       columnsNumber={2}
