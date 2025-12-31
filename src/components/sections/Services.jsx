@@ -38,7 +38,12 @@ const Services = () => {
       title='Nuestros Servicios'
       subtitle='Soluciones integrales para el cuidado de tu vehículo'
       components={[
-        <CardGrid key={0} rows={2} columns={2} className='mt-20 lg:mx-40'>
+        <CardGrid
+          key={0}
+          rows={2}
+          columns={2}
+          className='mt-20 max-w-6xl mx-auto'
+        >
           {services.map((service, index) => (
             <Card
               key={index}

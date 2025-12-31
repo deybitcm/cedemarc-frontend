@@ -57,13 +57,7 @@ function App() {
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <HashRouter>
         <ScrollToSection />
-        <div
-          className={`min-h-screen flex flex-col ${
-            theme === 'dark'
-              ? 'bg-gray-900 text-white'
-              : 'bg-white text-gray-900'
-          }`}
-        >
+        <div className='min-h-screen flex flex-col bg-bg-primary text-text-primary'>
           <Navbar />
           {showPromotion && (
             <PromotionModal

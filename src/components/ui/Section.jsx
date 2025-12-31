@@ -1,5 +1,3 @@
-import { useContext } from 'react'
-import ThemeContext from '../../ThemeContext'
 import PropTypes from 'prop-types'
 
 /**
@@ -24,16 +22,10 @@ const Section = ({
   subtitle,
   columnsNumber = 1,
 }) => {
-  const { theme } = useContext(ThemeContext)
-
   const themeClass =
     variant === 'primary'
-      ? theme === 'dark'
-        ? 'bg-gray-900 text-white'
-        : 'bg-white text-gray-900'
-      : theme === 'dark'
-      ? 'bg-gray-800 text-white'
-      : 'bg-gray-100 text-gray-900'
+      ? 'bg-bg-primary text-text-primary'
+      : 'bg-bg-secondary text-text-primary'
 
   const columnClass = `grid grid-cols-1 sm:grid-cols-${columnsNumber} gap-4` // Adjust for single column on small devices and dynamic columns on larger screens
 
@@ -43,18 +35,13 @@ const Section = ({
       className={`relative flex flex-col items-center  overflow-hidden ${themeClass} ${className}`.trim()}
     >
       {title && (
-        <h2
-          className={`text-3xl text-center font-extrabold sm:text-4xl animate-fade-in 
-             ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
-        >
+        <h2 className='text-3xl text-center font-extrabold sm:text-4xl animate-fade-in text-text-primary'>
           {title}
         </h2>
       )}
       {subtitle && (
         <p
-          className={`mt-4 mx-5 text-xl text-center lg:text-2xl  animate-fade-in ${
-            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-          }`}
+          className='mt-4 mx-5 text-xl text-center lg:text-2xl animate-fade-in text-text-secondary'
           style={{ animationDelay: '0.2s' }}
         >
           {subtitle}

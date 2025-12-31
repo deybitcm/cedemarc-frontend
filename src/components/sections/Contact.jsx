@@ -1,5 +1,4 @@
-import { useState, useContext } from 'react'
-import ThemeContext from '../../ThemeContext'
+import { useState } from 'react'
 import Notification from '../ui/Notification'
 import Section from '../ui/Section'
 import Form from '../ui/Form'
@@ -81,14 +80,8 @@ const Contact = () => {
     }
   }
 
-  const { theme } = useContext(ThemeContext)
-
   const prefix_for_telephone = (
-    <div
-      className={`flex items-center space-x-1 ${
-        theme === 'dark' ? 'text-white' : 'text-gray-700'
-      }`}
-    >
+    <div className='flex items-center space-x-1 text-text-primary'>
       <Icon name='peru_flag' width='w-6' />
       <span className='ml-1 '>+51</span>
     </div>
@@ -97,22 +90,16 @@ const Contact = () => {
   return (
     <Section
       id='contacto'
-      className={`py-20 sm:px-6 lg:px-8 `}
+      className={`py-20 sm:px-6 lg:px-8 max-w-7xl mx-auto`}
       title='Contáctanos'
       subtitle='Estamos aquí para atenderte'
       columnsNumber={2}
       components={[
         <div
           key={0}
-          className={`${
-            theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'
-          } p-6 mt-12 lg:mx-10 sm:mx-0 rounded-lg`}
+          className='bg-bg-secondary p-6 mt-12 lg:mx-10 sm:mx-0 rounded-lg'
         >
-          <h3
-            className={`text-xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}
-          >
+          <h3 className='text-xl font-bold mb-4 text-text-primary'>
             Información de Contacto
           </h3>
           <div className='space-y-4'>

@@ -43,13 +43,13 @@ const Hero = () => {
       components={
         //lista de componentes:
         [
-          <div key={0} className='relative w-full h-full object cover'>
+          <div key={0} className='relative w-full h-full'>
             <Video
               src={oilChangeVideo}
               opacity={50}
               className=' w-full h-full object-cover'
             />
-            <div className='absolute top-0 z-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in flex justify-center flex-col w-full h-full'>
+            <div className='absolute left-1/2 top-0 transform -translate-x-1/2 max-w-7xl px-4 sm:px-6 lg:px-8 text-center animate-fade-in flex justify-center flex-col w-full h-full'>
               <Image
                 id='hero-logo'
                 src={logoCedemarcBlanco}
