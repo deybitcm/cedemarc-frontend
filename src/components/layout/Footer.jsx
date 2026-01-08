@@ -54,7 +54,7 @@ const Footer = () => {
           <h3 className='text-lg font-bold mt-4'>Horarios de atención</h3>
           <div className='w-10 h-1 bg-red-500 my-2'></div>
           <p>Lunes a Sábados: 8:00 AM - 6:30 PM</p>
-          <p>Jueves(horario especial): 8:00 AM - 5:00 PM</p>
+          <p>Viernes(horario especial): 8:00 AM - 5:00 PM</p>
           <p>Domingo: Cerrado</p>
         </div>
 
