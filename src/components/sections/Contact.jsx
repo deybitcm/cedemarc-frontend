@@ -105,7 +105,7 @@ const Contact = () => {
           <div className='space-y-4'>
             <ContactInfo
               iconName='location_marker'
-              text='Av. Industrial #1759 Tacna, Perú'
+              text='Av. Industrial 1579 Tacna, Perú'
             />
             <ContactInfo
               iconName='whatsapp'
