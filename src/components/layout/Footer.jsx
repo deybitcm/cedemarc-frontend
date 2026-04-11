@@ -43,7 +43,7 @@ const Footer = () => {
           <div className='w-10 h-1 bg-red-500 my-2'></div>
           <ul className='space-y-2'>
             <li>
-              <span className='font-bold'>Ventas:</span> 921 604 711
+              <span className='font-bold'>Ventas:</span> 935 918 678
             </li>
             <li>
               <span className='font-bold'>Servicio al Cliente:</span> 981 790
@@ -53,7 +53,7 @@ const Footer = () => {
           {/* Horarios de atención */}
           <h3 className='text-lg font-bold mt-4'>Horarios de atención</h3>
           <div className='w-10 h-1 bg-red-500 my-2'></div>
-          <p>Lunes a Sábados: 8:00 AM - 6:30 PM</p>
+          <p>Lunes a Sábados: 8:00 AM - 6:00 PM</p>
           <p>Viernes(horario especial): 8:00 AM - 5:00 PM</p>
           <p>Domingo: Cerrado</p>
         </div>
@@ -63,8 +63,8 @@ const Footer = () => {
           <h3 className='text-lg font-bold'>Visítanos</h3>
           <div className='w-10 h-1 bg-red-500 my-2'></div>
           <p className='mb-4'>
-            Av. Industrial Nro.1579, a cuadra y media más arriba de Polvos
-            Rosados, Tacna - Perú.
+            Av. Industrial Nro. 1579, cuadra y media más arriba de Polvos
+            Rosados, Tacna.
           </p>
           <div className='w-full overflow-hidden'>
             <iframe
