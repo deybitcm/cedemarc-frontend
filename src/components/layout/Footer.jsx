@@ -43,7 +43,7 @@ const Footer = () => {
           <div className='w-10 h-1 bg-red-500 my-2'></div>
           <ul className='space-y-2'>
             <li>
-              <span className='font-bold'>Ventas:</span> 921 604 711
+              <span className='font-bold'>Ventas:</span> 935 918 678
             </li>
             <li>
               <span className='font-bold'>Servicio al Cliente:</span> 981 790
