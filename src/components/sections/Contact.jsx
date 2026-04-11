@@ -109,8 +109,8 @@ const Contact = () => {
             />
             <ContactInfo
               iconName='whatsapp'
-              text='(+51) 921 604 711'
-              link='https://wa.me/51921604711'
+              text='(+51) 935 918 678'
+              link='https://wa.me/51935918678'
             />
             <ContactInfo
               iconName='email'
