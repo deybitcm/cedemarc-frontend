@@ -112,10 +112,7 @@ const Contact = () => {
               text='(+51) 935 918 678'
               link='https://wa.me/51935918678'
             />
-            <ContactInfo
-              iconName='email'
-              text='cedemarc.dist.soluciones@gmail.com'
-            />
+            <ContactInfo iconName='email' text='cedemarceirl@gmail.com' />
             <ContactInfo
               iconName='facebook'
               text='Cedemarc Distribuciones y Soluciones EIRL'
